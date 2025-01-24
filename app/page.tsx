@@ -24,8 +24,8 @@ export default function Home() {
         <p>
           At its core, DEFA is built on a strong sense of community. The
           contributors to its exhibitions and zines are not just
-          collaborators—they're family and friends, creating a deeply personal
-          and connected creative network.
+          collaborators—they&apos;re family and friends, creating a deeply
+          personal and connected creative network.
         </p>
 
         <p>

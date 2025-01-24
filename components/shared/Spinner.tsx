@@ -1,9 +1,6 @@
 import Image from "next/image";
-import { FC } from "react";
 
-export interface SpinnerProps {}
-
-export const Spinner: FC<SpinnerProps> = ({}) => {
+export const Spinner = () => {
   return (
     <Image
       src="/logo.png"
