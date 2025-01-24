@@ -33,8 +33,8 @@ export const YokoMenu = () => {
             className="absolute top-10 md:top-16 right-20 md:right-10 cursor-pointer"
             onClick={toggleMenu}
           >
-            <div className="relative bg-white rounded-lg px-6 pb-3 shadow-md text-black">
-              <span className="text-lg">...</span>
+            <div className="relative bg-white rounded-lg px-4 pb-2 shadow-md text-black">
+              <span className="text-base">wip</span>
               <div
                 className="absolute -left-3 top-1/2 -translate-y-1/2 w-0 h-0
                   border-r-[12px] border-r-white
