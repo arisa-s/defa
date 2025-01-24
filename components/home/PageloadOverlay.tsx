@@ -27,35 +27,35 @@ export const PageloadOverlay = () => {
           {/* Glassmorphism background (behind the image) */}
           <div className="absolute inset-0 bg-white/30 backdrop-blur-sm" />
 
-          {/* Image with controlled fade, zoom, and spin */}
+          {/* Image with fade, zoom, pause, and spin */}
           <motion.img
             src="/logo.png"
             key="loader"
             className="relative z-10 h-96"
             variants={{
-              /** Start hidden, tiny, and unrotated */
+              // Start hidden, tiny, and unrotated
               initial: { opacity: 0, scale: 0.1, rotate: 0 },
 
-              /** Sequence of:
-               * 1) fade/zoom in
-               * 2) then spin
-               */
+              // 1) Fade+zoom in
+              // 2) Pause
+              // 3) Spin
               animate: {
-                opacity: [0, 1, 1], // fade in quickly, then stay
-                scale: [0.1, 1, 1], // scale up quickly, then stay
-                rotate: [0, 0, 720], // no rotation at first, then 2 spins
+                // 4 keyframes for each property
+                opacity: [0, 1, 1, 1],
+                scale: [0.1, 1, 1, 1],
+                rotate: [0, 0, 0, 720],
                 transition: {
-                  duration: 3, // total length of this "animate" phase
-                  times: [0, 0.3, 1], // 0-30% = fade/zoom in, 30-100% = spin
+                  duration: 4, // total length of this "animate" sequence
+                  times: [0, 0.2, 0.3, 1],
                   ease: "easeInOut",
                 },
               },
 
-              /** Fade out & upscale while still spinning  */
+              // Fade out & upscale while still spinning
               exit: {
                 opacity: 0,
                 scale: 5,
-                rotate: 1440, // add two more spins on exit
+                rotate: 1440, // extra spins on exit
                 transition: { duration: 1, ease: "easeInOut" },
               },
             }}
