@@ -31,7 +31,7 @@ export const PageloadOverlay = () => {
           <motion.img
             src="/logo.png"
             key="loader"
-            className="relative z-10 h-96"
+            className="relative z-10 h-52 md:h-96"
             variants={{
               // Start hidden, tiny, and unrotated
               initial: { opacity: 0, scale: 0.1, rotate: 0 },
