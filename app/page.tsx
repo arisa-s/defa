@@ -5,7 +5,7 @@ import YokoMenu from "@/components/shared/YokoMenu";
 export default function Home() {
   return (
     <div className="items-center justify-items-center h-screen">
-      <main className="flex flex-col gap-8 items-center sm:items-start justify-center min-h-screen max-w-6xl mx-auto text-2xl">
+      <main className="p-4 flex flex-col gap-8 items-center sm:items-start justify-center min-h-screen max-w-6xl mx-auto text-lg md:text-2xl">
         <p>
           Studio DEFA is a curatorial platform and creative production studio
           founded by Noor de Falco dedicated to showcasing and supporting the
