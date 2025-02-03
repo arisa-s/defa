@@ -2,7 +2,7 @@ import { defineQuery, PortableText } from "next-sanity";
 import type { Metadata, ResolvingMetadata } from "next";
 import { type PortableTextBlock } from "next-sanity";
 import { notFound } from "next/navigation";
-import { resolveOpenGraphImage } from "@/sanity/lib/image";
+import { resolveOpenGraphImage, urlForImage } from "@/sanity/lib/image";
 import CoverImage from "@/components/publication/CoverImage";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { publicationQuery } from "@/sanity/lib/queries/publication";
@@ -60,7 +60,11 @@ export default async function Page({ params }: Props) {
           {publication.title}
         </h1>
         <div className="mb-8 sm:mx-0 md:mb-16">
-          <CoverImage image={publication.coverImage} priority />
+          <CoverImage
+            image={publication.coverImage}
+            priority
+            alt={publication.title}
+          />
         </div>
         {publication.description?.length && (
           <PortableText

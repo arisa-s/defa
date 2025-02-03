@@ -69,7 +69,7 @@ export const YokoMenu = () => {
                           px-3 py-1
                          transition"
             >
-              X
+              close
             </button>
 
             <nav className="flex flex-col items-center gap-6">
