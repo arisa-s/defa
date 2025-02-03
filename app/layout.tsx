@@ -47,7 +47,7 @@ export default async function RootLayout({
     <html lang="en" className={`${montserrat.variable} antialiased`}>
       <body>
         <section>
-          <main className="min-h-screen px-6 max-w-6xl mx-auto">
+          <main className="min-h-screen px-6 py-12 max-w-6xl mx-auto">
             {children}
           </main>
           <Footer />

@@ -9,7 +9,7 @@ export interface ProjectsCardProps {
 export const ProjectsCard: FC<ProjectsCardProps> = ({ title, slug }) => {
   return (
     <Link href={`/project/${slug}`}>
-      <h2>{title}</h2>
+      <h2 className=" text-lg md:text-2xl underline p-4">{title}</h2>
     </Link>
   );
 };

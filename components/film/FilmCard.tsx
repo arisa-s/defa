@@ -9,7 +9,7 @@ export interface FilmsCardProps {
 export const FilmCard: FC<FilmsCardProps> = ({ slug, title }) => {
   return (
     <Link href={`/film/${slug}`}>
-      <h2>{title}</h2>
+      <h2 className=" text-lg md:text-2xl underline p-4">{title}</h2>
     </Link>
   );
 };

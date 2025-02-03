@@ -55,22 +55,24 @@ export default async function Page({ params }: Props) {
 
   return (
     <div className="container mx-auto px-5">
-      <article>
-        <h1 className="text-balance mb-12 text-6xl font-bold leading-tight tracking-tighter md:text-7xl md:leading-none lg:text-8xl">
-          {publication.title}
-        </h1>
-        <div className="mb-8 sm:mx-0 md:mb-16">
+      <article className="grid md:grid-cols-2 space-x-6 md:space-x-24">
+        <div>
+          <h1 className="text-balance mb-12 text-2xl font-bold leading-tight tracking-tighter md:text-6xl md:leading-none">
+            {publication.title}
+          </h1>
+          {publication.description?.length && (
+            <PortableText
+              value={publication.description as PortableTextBlock[]}
+            />
+          )}
+        </div>
+        <div className="content-center">
           <CoverImage
             image={publication.coverImage}
             priority
             alt={publication.title}
           />
         </div>
-        {publication.description?.length && (
-          <PortableText
-            value={publication.description as PortableTextBlock[]}
-          />
-        )}
       </article>
       <aside></aside>
     </div>

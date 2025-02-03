@@ -75,35 +75,35 @@ export const YokoMenu = () => {
               {/* Replace these with your actual links */}
               <Link
                 href="/"
-                className="text-2xl text-black hover:underline"
+                className=" text-lg md:text-2xl  text-black hover:underline"
                 onClick={toggleMenu}
               >
                 Home
               </Link>
               <Link
                 href="/about"
-                className="text-2xl text-black hover:underline"
+                className=" text-lg md:text-2xl  text-black hover:underline"
                 onClick={toggleMenu}
               >
                 About
               </Link>
               <Link
                 href="/project"
-                className="text-2xl text-black hover:underline"
+                className=" text-lg md:text-2xl  text-black hover:underline"
                 onClick={toggleMenu}
               >
                 Projects
               </Link>
               <Link
                 href="/publication"
-                className="text-2xl text-black hover:underline"
+                className=" text-lg md:text-2xl  text-black hover:underline"
                 onClick={toggleMenu}
               >
                 Publications
               </Link>
               <Link
                 href="/film"
-                className="text-2xl text-black hover:underline"
+                className=" text-lg md:text-2xl  text-black hover:underline"
                 onClick={toggleMenu}
               >
                 Films

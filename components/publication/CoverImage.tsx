@@ -12,16 +12,14 @@ export default function CoverImage(props: CoverImageProps) {
   const { image: source, priority, alt } = props;
 
   return (
-    <div className="shadow-md transition-shadow duration-200 group-hover:shadow-lg sm:mx-0">
-      <Image
-        className="h-auto w-full"
-        width={2000}
-        height={1000}
-        alt={alt}
-        src={urlForImage(source)?.height(1000).width(2000).url() as string}
-        sizes="100vw"
-        priority={priority}
-      />
-    </div>
+    <Image
+      className="h-auto w-full max-w-96"
+      width={1400}
+      height={2000}
+      alt={alt}
+      src={urlForImage(source)?.height(2000).width(1400).url() as string}
+      sizes="100vw"
+      priority={priority}
+    />
   );
 }
