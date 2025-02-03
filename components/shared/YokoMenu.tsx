@@ -65,8 +65,7 @@ export const YokoMenu = () => {
             {/* Close button or X icon */}
             <button
               onClick={toggleMenu}
-              className="absolute top-4 right-4 text-gray-700 text-2xl font-bold
-                          px-3 py-1
+              className="absolute top-4 right-4 text-gray-700 px-3 py-1 text-xl
                          transition"
             >
               close

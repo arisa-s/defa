@@ -13,21 +13,15 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  parent: ResolvingMetadata
+  parent?: ResolvingMetadata
 ): Promise<Metadata> {
   const site = await sanityFetch({
     query: siteSettingsQuery,
     stega: false,
   });
-  const previousImages = (await parent).openGraph?.images || [];
-  const ogImage = resolveOpenGraphImage(site?.ogImage);
 
   return {
-    title: site?.title,
     description: `About ${site?.title}`,
-    openGraph: {
-      images: ogImage ? [ogImage, ...previousImages] : previousImages,
-    },
   } satisfies Metadata;
 }
 
