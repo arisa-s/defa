@@ -1,8 +1,7 @@
 import { PortableText } from "next-sanity";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 import { type PortableTextBlock } from "next-sanity";
 import { notFound } from "next/navigation";
-import { resolveOpenGraphImage } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { aboutQuery, siteSettingsQuery } from "@/sanity/lib/queries";
 
@@ -12,9 +11,7 @@ export async function generateStaticParams() {
   });
 }
 
-export async function generateMetadata(
-  parent?: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   const site = await sanityFetch({
     query: siteSettingsQuery,
     stega: false,
