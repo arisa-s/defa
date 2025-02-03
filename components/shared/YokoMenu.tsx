@@ -82,21 +82,28 @@ export const YokoMenu = () => {
                 Home
               </Link>
               <Link
-                href="/projects"
+                href="/about"
+                className="text-2xl text-black hover:underline"
+                onClick={toggleMenu}
+              >
+                About
+              </Link>
+              <Link
+                href="/project"
                 className="text-2xl text-black hover:underline"
                 onClick={toggleMenu}
               >
                 Projects
               </Link>
               <Link
-                href="/publications"
+                href="/publication"
                 className="text-2xl text-black hover:underline"
                 onClick={toggleMenu}
               >
                 Publications
               </Link>
               <Link
-                href="/films"
+                href="/film"
                 className="text-2xl text-black hover:underline"
                 onClick={toggleMenu}
               >
