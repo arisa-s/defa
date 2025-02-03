@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page() {
-  const [about] = await Promise.all([sanityFetch({ query: aboutQuery })]);
+  const about = await sanityFetch({ query: aboutQuery });
 
   if (!about?._id) {
     return notFound();

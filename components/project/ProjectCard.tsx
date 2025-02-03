@@ -1,17 +1,23 @@
+import { Image } from "next-sanity/image";
 import Link from "next/link";
 import { FC } from "react";
 
-export interface ProjectsCardProps {
+export interface ProjectCardProps {
   title: string;
   slug: string;
+  imageUrl: string;
 }
 
-export const ProjectsCard: FC<ProjectsCardProps> = ({ title, slug }) => {
+export const ProjectCard: FC<ProjectCardProps> = ({
+  title,
+  slug,
+  imageUrl,
+}) => {
   return (
     <Link href={`/project/${slug}`}>
-      <h2 className=" text-lg md:text-2xl underline p-4">{title}</h2>
+      <Image src={imageUrl} alt={title} width={500} height={500} />
     </Link>
   );
 };
 
-export default ProjectsCard;
+export default ProjectCard;
