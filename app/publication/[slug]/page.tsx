@@ -2,7 +2,7 @@ import { defineQuery, PortableText } from "next-sanity";
 import type { Metadata, ResolvingMetadata } from "next";
 import { type PortableTextBlock } from "next-sanity";
 import { notFound } from "next/navigation";
-import { resolveOpenGraphImage, urlForImage } from "@/sanity/lib/image";
+import { resolveOpenGraphImage } from "@/sanity/lib/image";
 import CoverImage from "@/components/publication/CoverImage";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { publicationQuery } from "@/sanity/lib/queries/publication";

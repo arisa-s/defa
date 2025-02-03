@@ -69,6 +69,10 @@ export const siteSettingsType = defineType({
             });
           },
         }),
+        defineField({
+          name: "metadataBase",
+          type: "url",
+        }),
       ],
     }),
   ],
