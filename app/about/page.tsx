@@ -6,9 +6,10 @@ import { sanityFetch } from "@/sanity/lib/fetch";
 import { aboutQuery, siteSettingsQuery } from "@/sanity/lib/queries";
 
 export async function generateStaticParams() {
-  return await sanityFetch({
-    query: aboutQuery,
-  });
+  const about = await sanityFetch({ query: aboutQuery });
+
+  // Ensure the return type is an array
+  return about ? [{}] : [];
 }
 
 export async function generateMetadata(): Promise<Metadata> {
