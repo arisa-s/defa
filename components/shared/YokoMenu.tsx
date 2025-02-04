@@ -33,11 +33,20 @@ export const YokoMenu = () => {
             className="absolute top-10 md:top-16 right-20 md:right-10 cursor-pointer"
             onClick={toggleMenu}
           >
-            <div className="relative bg-white rounded-lg px-4 pb-2 pt-1 shadow-md text-black">
+            <div className="relative bg-primary rounded-lg px-4 pb-2 pt-1 text-secondary border border-[#980000]">
               <span className="text-base">wip</span>
+
+              {/* Triangle Border (Outline) */}
+              <div
+                className="absolute -left-3.5 top-1/2 -translate-y-1/2 w-0 h-0
+                  border-r-[14px] border-r-[#980000]
+                  border-y-[10px] border-y-transparent"
+              />
+
+              {/* Triangle (Tail) */}
               <div
                 className="absolute -left-3 top-1/2 -translate-y-1/2 w-0 h-0
-                  border-r-[12px] border-r-white
+                  border-r-[12px] border-r-[#cfe2f3]
                   border-y-[8px] border-y-transparent"
               />
             </div>
@@ -65,8 +74,7 @@ export const YokoMenu = () => {
             {/* Close button */}
             <button
               onClick={toggleMenu}
-              className="absolute top-4 right-4 px-3 py-1
-                         transition"
+              className="absolute top-4 right-4 px-3 py-1 transition"
             >
               close
             </button>
