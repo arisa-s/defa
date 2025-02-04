@@ -4,7 +4,6 @@ import {
   SanityImageHotspot,
 } from "@/sanity.types";
 import { urlForImage } from "@/sanity/lib/image";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { Image } from "next-sanity/image";
 import { FC } from "react";
 
