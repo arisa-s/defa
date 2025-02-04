@@ -21,7 +21,7 @@ export const MultiGallery: FC<MultiGalleryProps> = ({ galleries }) => {
           <button
             key={g.title}
             onClick={() => setSelected(g)}
-            className={`text-lg md:text-2xl font-alternative ${selected == g && "text-[30px] md:text-5xl"}`}
+            className={`text-lg md:text-2xl font-alternative ${selected == g && "text-[26px] md:text-5xl"}`}
           >
             {g.title}
           </button>
