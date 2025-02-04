@@ -1,7 +1,6 @@
 "use client";
 
 import { FC } from "react";
-import "pure-react-carousel/dist/react-carousel.es.css";
 import { urlForImage } from "@/sanity/lib/image";
 import { Image } from "next-sanity/image";
 import { DefaPhotoGalleryProps } from "../DefaPhotoGallery";
