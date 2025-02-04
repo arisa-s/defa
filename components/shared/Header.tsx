@@ -29,7 +29,7 @@ const NavLink = ({
       href={href}
       className={`${
         selected ? "text-primary font-medium" : "text-muted"
-      } hover:text-primary hover:font-medium uppercase text-xs`}
+      } hover:text-primary hover:font-medium uppercase text-xs font-accent`}
     >
       {children}
     </Link>

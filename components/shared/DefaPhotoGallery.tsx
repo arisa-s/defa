@@ -1,16 +1,16 @@
-import { Gallery } from "@/sanity.types";
+import { Gallery, SanityImageAsset } from "@/sanity.types";
 import { urlForImage } from "@/sanity/lib/image";
 import { Image } from "next-sanity/image";
 import { FC } from "react";
 
 export interface DefaPhotoGalleryProps {
-  gallery: Gallery;
+  images: any;
 }
 
-export const DefaPhotoGallery: FC<DefaPhotoGalleryProps> = ({ gallery }) => {
+export const DefaPhotoGallery: FC<DefaPhotoGalleryProps> = ({ images }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-      {gallery.images?.map((image, index) => (
+      {images?.map((image, index) => (
         <Image
           key={index}
           className="h-auto w-full"

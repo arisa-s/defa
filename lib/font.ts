@@ -1,6 +1,12 @@
-import { Montserrat } from "next/font/google";
+import { Montserrat, Young_Serif } from "next/font/google";
 
 export const montserrat = Montserrat({
   variable: "--font-montserrat",
+  subsets: ["latin"],
+});
+
+export const youngSerif = Young_Serif({
+  variable: "--font-young-serif",
+  weight: ["400"],
   subsets: ["latin"],
 });

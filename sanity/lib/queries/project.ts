@@ -9,7 +9,8 @@ const projectFields = /* groq */ `
   coverImage,
   date,
   endDate,
-  galleries
+  galleries,
+  featured
 `;
 
 const projectSummaryFields = /* groq */ `

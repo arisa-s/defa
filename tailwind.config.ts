@@ -40,6 +40,11 @@ export default {
         component: "var(--border-component)",
       },
 
+      fontFamily: {
+        accent: ["var(--font-young-serif)"],
+        base: ["var(--font-montserrat)"],
+      },
+
       /* You can also extend ringColor, ringOffsetColor, etc. if needed */
     },
   },

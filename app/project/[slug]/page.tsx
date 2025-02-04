@@ -57,7 +57,8 @@ export default async function Page({ params }: Props) {
 
   return (
     <div className="container mx-auto px-5">
-      <article>
+      <article className="space-y-6 md:space-y-12 flex flex-col">
+        <DefaPhotoGallery images={project.featured?.images} />
         <DefaHeader>{project.title}</DefaHeader>
         {project.description?.length && (
           <PortableText
@@ -66,7 +67,7 @@ export default async function Page({ params }: Props) {
           />
         )}
         {project.galleries?.map((gallery, index) => (
-          <DefaPhotoGallery key={index} gallery={gallery} />
+          <DefaPhotoGallery key={index} images={gallery.images} />
         ))}
       </article>
       <aside></aside>

@@ -8,7 +8,7 @@ export default async function Page() {
   ]);
 
   return (
-    <div className="container mx-auto px-5">
+    <div className="container mx-auto px-5 flex flex-col space-y-6">
       {publications.map((p) => (
         <PublicationCard key={p._id} {...p} />
       ))}

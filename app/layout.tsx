@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { montserrat } from "@/lib/font";
+import { montserrat, youngSerif } from "@/lib/font";
 import { toPlainText } from "next-sanity";
 
 import { sanityFetch } from "@/sanity/lib/fetch";
@@ -45,11 +45,14 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${montserrat.variable} antialiased`}>
+    <html
+      lang="en"
+      className={`${montserrat.variable} ${youngSerif.variable} antialiased`}
+    >
       <body>
         <section>
           <Header />
-          <main className="min-h-screen px-6 pt-24 max-w-6xl mx-auto">
+          <main className="min-h-screen px-6 pt-24 md:pt-32 max-w-6xl mx-auto">
             {children}
           </main>
           <Footer />

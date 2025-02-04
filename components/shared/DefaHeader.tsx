@@ -18,7 +18,7 @@ export const DefaHeader: FC<DefaHeaderProps> = ({
     case "h1":
       return (
         <h1
-          className={`text-balance mb-12 text-4xl font-bold leading-tight tracking-tighter md:text-5xl md:leading-none lg:text-6xl ${className}`}
+          className={`font-accent text-balance text-4xl font-bold md:text-5xl md:leading-none lg:text-6xl ${className}`}
           {...props}
         />
       );

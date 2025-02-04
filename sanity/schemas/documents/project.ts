@@ -63,6 +63,11 @@ export const projectType = defineType({
       of: [{ type: "block" }],
     }),
     defineField({
+      name: "featured",
+      title: "Featured Images",
+      type: "featuredImages",
+    }),
+    defineField({
       name: "galleries",
       title: "Photo Galleries",
       type: "array",
