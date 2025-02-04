@@ -1,6 +1,6 @@
 import { Image } from "next-sanity/image";
-import Link from "next/link";
 import { FC } from "react";
+import { DefaLink } from "../shared";
 
 export interface ProjectCardProps {
   title: string;
@@ -14,9 +14,9 @@ export const ProjectCard: FC<ProjectCardProps> = ({
   imageUrl,
 }) => {
   return (
-    <Link href={`/project/${slug}`}>
+    <DefaLink href={`/project/${slug}`}>
       <Image src={imageUrl} alt={title} width={500} height={500} />
-    </Link>
+    </DefaLink>
   );
 };
 
