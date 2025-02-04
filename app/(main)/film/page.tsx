@@ -18,7 +18,7 @@ export default async function Page() {
   return (
     <div className="mx-auto mb-24">
       {films.map((film) => (
-        <div className="mx-auto px-5" key={film._id}>
+        <div className="mx-auto" key={film._id}>
           <article className="space-y-12">
             <div>
               <DefaHeader type="h2">{film.title}</DefaHeader>
