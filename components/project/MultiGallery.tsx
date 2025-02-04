@@ -13,6 +13,7 @@ export const MultiGallery: FC<MultiGalleryProps> = ({ galleries }) => {
     return <p>No galleries available</p>;
   }
 
+  console.log(selected);
   return (
     <div className="flex w-full space-x-12 md:space-x-24">
       <div className="flex flex-col space-y-6 sticky top-0 my-12">
@@ -20,7 +21,7 @@ export const MultiGallery: FC<MultiGalleryProps> = ({ galleries }) => {
           <button
             key={g.title}
             onClick={() => setSelected(g)}
-            className={`text-lg md:text-2xl font-alternative ${selected == g && "text-2xl md:text-5xl"}`}
+            className={`text-lg md:text-2xl font-alternative ${selected == g && "text-[30px] md:text-5xl"}`}
           >
             {g.title}
           </button>

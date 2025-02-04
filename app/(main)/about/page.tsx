@@ -34,7 +34,7 @@ export default async function Page() {
 
   return (
     <div>
-      <article>
+      <article className="pb-36">
         {about.content?.length && (
           <PortableText
             components={SanityComponents}
