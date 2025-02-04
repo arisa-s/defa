@@ -12,7 +12,7 @@ const DefaGridGallery: FC<DefaPhotoGalleryProps> = ({ images }) => {
   return (
     <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
       <Masonry>
-        {images.map((image, index) => {
+        {images.map((image) => {
           if (!image.asset) return null;
           const {
             dimensions: { width, height },

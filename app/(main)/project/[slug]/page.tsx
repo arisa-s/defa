@@ -61,7 +61,9 @@ export default async function Page({ params }: Props) {
   return (
     <div className="mx-auto mb-12 md:mb-24">
       <article className="space-y-6 md:space-y-12 flex flex-col">
-        <DefaPhotoGallery images={project.featured?.images} type={"inline"} />
+        {project.featured?.images && (
+          <DefaPhotoGallery images={project.featured?.images} type={"inline"} />
+        )}
         <DefaHeader>{project.title}</DefaHeader>
         <div>
           {project.description?.length && (

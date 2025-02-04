@@ -10,8 +10,6 @@ const DefaStackedGallery: FC<DefaPhotoGalleryProps> = ({
   images,
   hideTitle,
 }) => {
-  if (!images || images.length === 0) return null;
-
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -21,6 +19,7 @@ const DefaStackedGallery: FC<DefaPhotoGalleryProps> = ({
   const currentImage = images[currentIndex];
 
   if (!currentImage.asset) return null;
+
   const {
     dimensions: { width, height },
   } = decodeAssetId(currentImage.asset._ref);
@@ -29,6 +28,7 @@ const DefaStackedGallery: FC<DefaPhotoGalleryProps> = ({
     .height(height)
     .url();
 
+  if (!images || images.length === 0) return null;
   return (
     <div className="w-full flex flex-col items-center gap-4">
       {hideTitle ? null : <DefaHeader type="h3">Stacked Gallery</DefaHeader>}

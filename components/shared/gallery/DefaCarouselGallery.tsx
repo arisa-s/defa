@@ -50,10 +50,7 @@ const CustomRightArrow: FC<CustomArrowProps> = ({ onClick }) => {
   );
 };
 
-const DefaCarouselGallery: FC<DefaPhotoGalleryProps> = ({
-  images,
-  hideTitle,
-}) => {
+const DefaCarouselGallery: FC<DefaPhotoGalleryProps> = ({ images }) => {
   if (!images || images.length === 0) return null;
   const width = 1249;
   const height = 1740;

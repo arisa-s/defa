@@ -6,7 +6,6 @@ import { toPlainText } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { siteSettingsQuery } from "@/sanity/lib/queries";
 import { resolveOpenGraphImage } from "@/sanity/lib/image";
-import Footer from "@/components/shared/Footer";
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await sanityFetch({

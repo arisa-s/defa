@@ -8,11 +8,10 @@ export interface MultiGalleryProps {
 }
 
 export const MultiGallery: FC<MultiGalleryProps> = ({ galleries }) => {
+  const [selected, setSelected] = useState(galleries[0]);
   if (galleries.length === 0) {
     return <p>No galleries available</p>;
   }
-
-  const [selected, setSelected] = useState(galleries[0]);
 
   return (
     <div className="flex w-full space-x-12 md:space-x-24">
@@ -28,7 +27,9 @@ export const MultiGallery: FC<MultiGalleryProps> = ({ galleries }) => {
         ))}
       </div>
       <div className="max-w-4xl mx-auto w-full">
-        <DefaPhotoGallery images={selected.images} type={"grid"} />
+        {selected.images && (
+          <DefaPhotoGallery images={selected.images} type={"grid"} />
+        )}
       </div>
     </div>
   );

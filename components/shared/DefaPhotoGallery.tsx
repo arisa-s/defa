@@ -12,23 +12,21 @@ import DefaGridGallery from "./gallery/DefaGridGallery";
 import DefaStackedGallery from "./gallery/DefaStackedGallery";
 
 export interface DefaPhotoGalleryProps {
-  images:
-    | {
-        asset?:
-          | {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean | undefined;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset" | undefined;
-            }
-          | undefined;
-        hotspot?: SanityImageHotspot | undefined;
-        crop?: SanityImageCrop | undefined;
-        alt?: string | undefined;
-        _type: "image";
-        _key: string;
-      }[]
-    | undefined;
+  images: {
+    asset?:
+      | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean | undefined;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset" | undefined;
+        }
+      | undefined;
+    hotspot?: SanityImageHotspot | undefined;
+    crop?: SanityImageCrop | undefined;
+    alt?: string | undefined;
+    _type: "image";
+    _key: string;
+  }[];
   type?: "carousel" | "stacked" | "inline" | "grid";
   hideTitle?: boolean;
 }
