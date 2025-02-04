@@ -10,7 +10,7 @@ const DefaInlineGallery: FC<DefaPhotoGalleryProps> = ({ images }) => {
 
   return (
     <div className="w-full overflow-x-auto">
-      <div className="flex flex-row h-40 md:h-96">
+      <div className="flex flex-row h-60 md:h-96">
         {images.map((image) => {
           if (!image.asset) return null;
           const {
