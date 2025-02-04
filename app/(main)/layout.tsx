@@ -47,7 +47,7 @@ export default async function RootLayout({
     <body>
       <section>
         <Header />
-        <main className="min-h-screen px-4 md:px-6 pt-32 md:pt-32 max-w-7xl mx-auto">
+        <main className="min-h-screen px-4 md:px-6 pt-24 md:pt-32 max-w-7xl mx-auto">
           {children}
         </main>
         <Footer />

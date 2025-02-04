@@ -33,7 +33,7 @@ export default async function Page() {
   }
 
   return (
-    <div className=" mx-auto px-5">
+    <div>
       <article>
         {about.content?.length && (
           <PortableText
