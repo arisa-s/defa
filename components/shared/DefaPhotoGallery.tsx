@@ -1,10 +1,31 @@
+import {
+  internalGroqTypeReferenceTo,
+  SanityImageCrop,
+  SanityImageHotspot,
+} from "@/sanity.types";
 import { urlForImage } from "@/sanity/lib/image";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { Image } from "next-sanity/image";
 import { FC } from "react";
 
 export interface DefaPhotoGalleryProps {
-  images: SanityImageSource[];
+  images:
+    | {
+        asset?:
+          | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean | undefined;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset" | undefined;
+            }
+          | undefined;
+        hotspot?: SanityImageHotspot | undefined;
+        crop?: SanityImageCrop | undefined;
+        alt?: string | undefined;
+        _type: "image";
+        _key: string;
+      }[]
+    | undefined;
 }
 
 export const DefaPhotoGallery: FC<DefaPhotoGalleryProps> = ({ images }) => {
