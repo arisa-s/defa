@@ -17,7 +17,7 @@ export default async function Page() {
           <article key={p._id}>
             <DefaHeader type="h2">{p.title}</DefaHeader>
             <div className="grid md:grid-cols-2 gap-6 md:gap-12">
-              <div className="flex flex-col md:order-last md:space-y-6 max-w-lg w-full mx-auto">
+              <div className="flex flex-col md:order-last md:space-y-6 max-w-sm md:max-w-lg w-full mx-auto">
                 <DefaCarouselGallery
                   images={[{ ...p.coverImage, _key: p._id }, ...p.previews!]}
                 />
