@@ -35,6 +35,7 @@ export default {
          BORDER COLORS
          --------------------- */
       borderColor: {
+        DEFAULT: "var(--border-primary)",
         primary: "var(--border-primary)",
         secondary: "var(--border-secondary)",
         component: "var(--border-component)",
@@ -43,6 +44,7 @@ export default {
       fontFamily: {
         accent: ["var(--font-young-serif)"],
         base: ["var(--font-montserrat)"],
+        alternative: ["var(--font-monoton)"],
       },
 
       /* You can also extend ringColor, ringOffsetColor, etc. if needed */

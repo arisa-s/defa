@@ -1,11 +1,15 @@
+"use client";
+
 import {
   internalGroqTypeReferenceTo,
   SanityImageCrop,
   SanityImageHotspot,
 } from "@/sanity.types";
-import { urlForImage } from "@/sanity/lib/image";
-import { Image } from "next-sanity/image";
 import { FC } from "react";
+import DefaCarouselGallery from "./gallery/DefaCarouselGallery";
+import DefaInlineGallery from "./gallery/DefaInlineGallery";
+import DefaGridGallery from "./gallery/DefaGridGallery";
+import DefaStackedGallery from "./gallery/DefaStackedGallery";
 
 export interface DefaPhotoGalleryProps {
   images:
@@ -25,23 +29,23 @@ export interface DefaPhotoGalleryProps {
         _key: string;
       }[]
     | undefined;
+  type?: "carousel" | "stacked" | "inline" | "grid";
+  hideTitle?: boolean;
 }
 
-export const DefaPhotoGallery: FC<DefaPhotoGalleryProps> = ({ images }) => {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-      {images?.map((image, index) => (
-        <Image
-          key={index}
-          className="h-auto w-full"
-          alt={"defa image"}
-          width={1400}
-          height={2000}
-          src={urlForImage(image).url() as string}
-        />
-      ))}
-    </div>
-  );
+export const DefaPhotoGallery: FC<DefaPhotoGalleryProps> = ({ ...props }) => {
+  switch (props.type) {
+    case "carousel":
+      return <DefaCarouselGallery {...props} />;
+    case "inline":
+      return <DefaInlineGallery {...props} />;
+    case "grid":
+      return <DefaGridGallery {...props} />;
+    case "stacked":
+      return <DefaStackedGallery {...props} />;
+    default:
+      return <DefaGridGallery {...props} />;
+  }
 };
 
 export default DefaPhotoGallery;

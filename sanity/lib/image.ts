@@ -16,3 +16,19 @@ export function resolveOpenGraphImage(image: any, width = 1200, height = 627) {
   if (!url) return;
   return { url, alt: image?.alt as string, width, height };
 }
+
+const pattern = /^image-([a-f\d]+)-(\d+x\d+)-(\w+)$/;
+
+export const decodeAssetId = (id: string) => {
+  // @ts-ignore
+  const [, assetId, dimensions, format] = pattern.exec(id);
+  const [width, height] = dimensions
+    .split("x")
+    .map((v: string) => parseInt(v, 10));
+
+  return {
+    assetId,
+    dimensions: { width, height },
+    format,
+  };
+};

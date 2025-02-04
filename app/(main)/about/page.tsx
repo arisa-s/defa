@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { aboutQuery, siteSettingsQuery } from "@/sanity/lib/queries";
 import { SanityComponents } from "@/sanity/components";
+import YokoMenu from "@/components/shared/YokoMenu";
 
 export async function generateStaticParams() {
   const about = await sanityFetch({ query: aboutQuery });
@@ -32,7 +33,7 @@ export default async function Page() {
   }
 
   return (
-    <div className="container mx-auto px-5">
+    <div className=" mx-auto px-5">
       <article>
         {about.content?.length && (
           <PortableText
@@ -41,7 +42,9 @@ export default async function Page() {
           />
         )}
       </article>
-      <aside></aside>
+      <aside>
+        <YokoMenu />
+      </aside>
     </div>
   );
 }

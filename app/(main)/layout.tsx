@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import { montserrat, youngSerif } from "@/lib/font";
+import "../globals.css";
 import { toPlainText } from "next-sanity";
 
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { siteSettingsQuery } from "@/sanity/lib/queries";
 import { resolveOpenGraphImage } from "@/sanity/lib/image";
 import Footer from "@/components/shared/Footer";
+import Header from "@/components/shared/Header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await sanityFetch({
@@ -44,11 +44,14 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${montserrat.variable} ${youngSerif.variable} antialiased`}
-    >
-      <body>{children}</body>
-    </html>
+    <body>
+      <section>
+        <Header />
+        <main className="min-h-screen px-4 md:px-6 pt-32 md:pt-32 max-w-7xl mx-auto">
+          {children}
+        </main>
+        <Footer />
+      </section>
+    </body>
   );
 }

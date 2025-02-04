@@ -36,6 +36,12 @@ export const publicationType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "previews",
+      title: "Preview",
+      type: "array",
+      of: [{ type: "image" }],
+    }),
+    defineField({
       name: "excerpt",
       title: "Excerpt",
       type: "text",
@@ -47,6 +53,11 @@ export const publicationType = defineType({
       title: "description",
       type: "array",
       of: [{ type: "block" }],
+    }),
+    defineField({
+      name: "credit",
+      title: "Credits",
+      type: "text",
     }),
   ],
   preview: {

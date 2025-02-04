@@ -56,7 +56,7 @@ export default async function Page({ params }: Props) {
   }
 
   return (
-    <div className="container mx-auto px-5">
+    <div className=" mx-auto px-5">
       <article className="grid md:grid-cols-2 space-x-6 md:space-x-24">
         <div>
           <DefaHeader>{publication.title}</DefaHeader>

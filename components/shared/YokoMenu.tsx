@@ -55,16 +55,17 @@ export const YokoMenu = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="
-              fixed inset-0
+              absolute top-0 right-0 left-0 py-24
               flex flex-col items-center justify-center
-              bg-white/50 backdrop-blur-md
+              bg-primary/50 backdrop-blur-md backdrop-filter
+              uppercase text-xs md:text-lg font-medium
               z-50
             "
           >
             {/* Close button */}
             <button
               onClick={toggleMenu}
-              className="absolute top-4 right-4 text-gray-700 px-3 py-1 text-xl
+              className="absolute top-4 right-4 px-3 py-1
                          transition"
             >
               close
@@ -75,7 +76,7 @@ export const YokoMenu = () => {
                 <Link
                   key={href}
                   href={href}
-                  className="text-primary text-lg md:text-2xl hover:underline"
+                  className="hover:underline font-accent"
                   onClick={toggleMenu}
                 >
                   {label}

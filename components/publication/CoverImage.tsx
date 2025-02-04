@@ -13,12 +13,11 @@ export default function CoverImage(props: CoverImageProps) {
 
   return (
     <Image
-      className="h-auto w-full max-w-96"
+      className="h-auto w-full max-w-md ml-auto"
       width={1400}
       height={2000}
       alt={alt}
       src={urlForImage(source)?.height(2000).width(1400).url() as string}
-      sizes="100vw"
       priority={priority}
     />
   );

@@ -6,11 +6,14 @@ export interface DefaHeaderProps
     HTMLHeadingElement
   > {
   className?: string;
+  /**
+   * Heading type to render. Defaults to "h1".
+   */
   type?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
 export const DefaHeader: FC<DefaHeaderProps> = ({
-  className,
+  className = "",
   type = "h1",
   ...props
 }) => {
@@ -18,20 +21,69 @@ export const DefaHeader: FC<DefaHeaderProps> = ({
     case "h1":
       return (
         <h1
-          className={`font-accent text-balance text-4xl font-bold md:text-5xl md:leading-none lg:text-6xl ${className}`}
+          className={`
+            text-balance mb-12 text-4xl font-bold leading-tight tracking-tighter
+            md:text-5xl md:leading-none lg:text-6xl font-accent
+            ${className}
+          `}
           {...props}
         />
       );
     case "h2":
-      return <h2 className={`${className}`} {...props} />;
+      return (
+        <h2
+          className={`
+            text-balance mb-8 text-3xl font-semibold leading-tight tracking-tight
+            md:text-4xl md:leading-tight font-accent
+            ${className}
+          `}
+          {...props}
+        />
+      );
     case "h3":
-      return <h3 className={`${className}`} {...props} />;
+      return (
+        <h3
+          className={`
+            text-balance mb-6 text-2xl font-semibold leading-snug
+            md:text-3xl md:leading-snug font-accent
+            ${className}
+          `}
+          {...props}
+        />
+      );
     case "h4":
-      return <h4 className={`${className}`} {...props} />;
+      return (
+        <h4
+          className={`
+            text-balance mb-4 text-xl font-semibold leading-snug
+            md:text-2xl font-accent
+            ${className}
+          `}
+          {...props}
+        />
+      );
     case "h5":
-      return <h5 className={`${className}`} {...props} />;
+      return (
+        <h5
+          className={`
+            text-balance mb-3 text-lg font-medium leading-snug
+            md:text-xl font-accent
+            ${className}
+          `}
+          {...props}
+        />
+      );
     case "h6":
-      return <h6 className={`${className}`} {...props} />;
+      return (
+        <h6
+          className={`
+            text-balance mb-2 text-base font-medium leading-tight
+            md:text-lg font-accent
+            ${className}
+          `}
+          {...props}
+        />
+      );
   }
 };
 

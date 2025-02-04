@@ -16,11 +16,18 @@ const filmFields = /* groq */ `
 `;
 
 const filmSummaryFields = /* groq */ `
-  _id,
+ _id,
   "title": coalesce(title, "Untitled"),
   "slug": slug.current,
   excerpt,
-  coverImage
+  description,
+  coverImage,
+  videos[] {
+    title,
+    thumbnail,
+    "videoFile": videoFile.asset->url,
+    caption
+  }
 `;
 
 export const filmQuery = defineQuery(`

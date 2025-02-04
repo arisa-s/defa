@@ -6,15 +6,20 @@ const publicationFields = /* groq */ `
   "slug": slug.current,
   description,
   excerpt,
+  previews,
   coverImage,
+  credit
 `;
 
 const publicationSummaryFields = /* groq */ `
     _id,
     "title": coalesce(title, "Untitled"),
     "slug": slug.current,
+    description,
     excerpt,
     coverImage,
+    previews,
+    credit
  `;
 
 export const publicationQuery = defineQuery(`

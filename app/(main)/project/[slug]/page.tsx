@@ -8,6 +8,8 @@ import { projectQuery } from "@/sanity/lib/queries/project";
 import DefaHeader from "@/components/shared/DefaHeader";
 import { SanityComponents } from "@/sanity/components";
 import DefaPhotoGallery from "@/components/shared/DefaPhotoGallery";
+import MultiGallery from "@/components/project/MultiGallery";
+import { Gallery } from "@/sanity.types";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -55,22 +57,28 @@ export default async function Page({ params }: Props) {
     return notFound();
   }
 
+  console.log(project.galleries);
   return (
-    <div className="container mx-auto px-5">
+    <div className="mx-auto mb-12 md:mb-24">
       <article className="space-y-6 md:space-y-12 flex flex-col">
-        <DefaPhotoGallery images={project.featured?.images} />
+        <DefaPhotoGallery images={project.featured?.images} type={"inline"} />
         <DefaHeader>{project.title}</DefaHeader>
-        {project.description?.length && (
-          <PortableText
-            components={SanityComponents}
-            value={project.description as PortableTextBlock[]}
-          />
-        )}
-        {project.galleries?.map((gallery, index) => (
-          <DefaPhotoGallery key={index} images={gallery.images} />
-        ))}
+        <div>
+          {project.description?.length && (
+            <PortableText
+              components={SanityComponents}
+              value={project.description as PortableTextBlock[]}
+            />
+          )}
+        </div>
+        <div>
+          <div className="pt-12">
+            {(project.galleries?.length || 0) >= 1 && (
+              <MultiGallery galleries={project.galleries as Gallery[]} />
+            )}
+          </div>
+        </div>
       </article>
-      <aside></aside>
     </div>
   );
 }

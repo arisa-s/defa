@@ -6,6 +6,7 @@
 :root {
   --font-montserrat: 'Montserrat', sans-serif;
   --font-young-serif: 'Young Serif', serif;
+  --font-monoton: "Monoton", serif;
 
   /* ---------------------
      Text color variables
@@ -29,7 +30,7 @@
   /* ---------------------
      Border color variables
      --------------------- */
-  --border-primary: #980000;
+  --border-primary: #98000046;
   --border-secondary: #888888;
   --border-component: #cccccc;
 }
@@ -38,4 +39,5 @@
 body {
   @apply text-primary bg-primary;
   font-family: var(--font-montserrat);
+   border-color: var(--border-primary);
 }

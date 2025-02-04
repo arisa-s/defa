@@ -10,10 +10,20 @@ export const SanityComponents: Partial<PortableTextReactComponents> = {
         {children}
       </Link>
     ),
+    strong: ({ children }) =>
+      children == "" ? (
+        <br />
+      ) : (
+        <strong className="font-semibold">{children}</strong>
+      ),
   },
   block: {
     normal: ({ children }) =>
-      children == "" ? <br /> : <DefaParahraph>{children}</DefaParahraph>,
+      children == "" ? (
+        <br />
+      ) : (
+        <DefaParahraph className="mb-1 md:mb-2">{children}</DefaParahraph>
+      ),
     h1: ({ children }) =>
       children == "" ? (
         <br />
@@ -75,15 +85,17 @@ export const SanityComponents: Partial<PortableTextReactComponents> = {
       <ul className="md:text-lg list-inside list-disc">{children}</ul>
     ),
     number: ({ children }) => (
-      <ol className="md:text-lg ml-4 list-outside list-decimal">{children}</ol>
+      <ol className="md:text-lg list-outside list-decimal">{children}</ol>
     ),
   },
   listItem: {
     bullet: ({ children }) => (
-      <li className="list leading-8 md:text-xl md:leading-9">{children}</li>
+      <li className="list leading-8 md:text-lg md:leading-9 mb-1 md:mb-2">
+        - {children}
+      </li>
     ),
     number: ({ children }) => (
-      <li className="list pl-2 leading-8 md:pl-4 md:text-xl md:leading-9">
+      <li className="list pl-2 leading-8 md:text-lg md:leading-9">
         {children}
       </li>
     ),
