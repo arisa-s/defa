@@ -1,14 +1,14 @@
 "use client";
+
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link"; // If you want Next.js-style links
+import Link from "next/link";
+import { LINKS } from "@/constants";
 
 export const YokoMenu = () => {
-  // State to track whether the menu overlay is open
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Toggles the menu overlay
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
@@ -50,19 +50,18 @@ export const YokoMenu = () => {
         {isMenuOpen && (
           <motion.div
             key="glass-overlay"
-            // Framer Motion animation
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }} // adjust speed to preference
+            transition={{ duration: 0.3 }}
             className="
               fixed inset-0
               flex flex-col items-center justify-center
-              bg-white/30 backdrop-blur-sm
+              bg-white/50 backdrop-blur-md
               z-50
             "
           >
-            {/* Close button or X icon */}
+            {/* Close button */}
             <button
               onClick={toggleMenu}
               className="absolute top-4 right-4 text-gray-700 px-3 py-1 text-xl
@@ -72,42 +71,16 @@ export const YokoMenu = () => {
             </button>
 
             <nav className="flex flex-col items-center gap-6">
-              {/* Replace these with your actual links */}
-              <Link
-                href="/"
-                className=" text-lg md:text-2xl  text-black hover:underline"
-                onClick={toggleMenu}
-              >
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className=" text-lg md:text-2xl  text-black hover:underline"
-                onClick={toggleMenu}
-              >
-                About
-              </Link>
-              <Link
-                href="/project"
-                className=" text-lg md:text-2xl  text-black hover:underline"
-                onClick={toggleMenu}
-              >
-                Projects
-              </Link>
-              <Link
-                href="/publication"
-                className=" text-lg md:text-2xl  text-black hover:underline"
-                onClick={toggleMenu}
-              >
-                Publications
-              </Link>
-              <Link
-                href="/film"
-                className=" text-lg md:text-2xl  text-black hover:underline"
-                onClick={toggleMenu}
-              >
-                Films
-              </Link>
+              {LINKS.map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="text-primary text-lg md:text-2xl hover:underline"
+                  onClick={toggleMenu}
+                >
+                  {label}
+                </Link>
+              ))}
             </nav>
           </motion.div>
         )}

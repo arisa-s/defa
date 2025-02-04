@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FC } from "react";
+import { DefaLink } from "../shared";
 
 export interface FilmsCardProps {
   slug: string;
@@ -7,11 +8,7 @@ export interface FilmsCardProps {
 }
 
 export const FilmCard: FC<FilmsCardProps> = ({ slug, title }) => {
-  return (
-    <Link href={`/film/${slug}`}>
-      <h2 className=" text-lg md:text-2xl underline p-4">{title}</h2>
-    </Link>
-  );
+  return <DefaLink href={`/film/${slug}`}>{title}</DefaLink>;
 };
 
 export default FilmCard;

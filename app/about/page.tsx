@@ -4,6 +4,7 @@ import { type PortableTextBlock } from "next-sanity";
 import { notFound } from "next/navigation";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { aboutQuery, siteSettingsQuery } from "@/sanity/lib/queries";
+import { SanityComponents } from "@/sanity/components";
 
 export async function generateStaticParams() {
   const about = await sanityFetch({ query: aboutQuery });
@@ -34,7 +35,10 @@ export default async function Page() {
     <div className="container mx-auto px-5">
       <article>
         {about.content?.length && (
-          <PortableText value={about.content as PortableTextBlock[]} />
+          <PortableText
+            components={SanityComponents}
+            value={about.content as PortableTextBlock[]}
+          />
         )}
       </article>
       <aside></aside>

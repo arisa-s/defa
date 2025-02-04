@@ -6,6 +6,8 @@ import { resolveOpenGraphImage } from "@/sanity/lib/image";
 import CoverImage from "@/components/publication/CoverImage";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { publicationQuery } from "@/sanity/lib/queries/publication";
+import { SanityComponents } from "@/sanity/components";
+import { DefaHeader } from "@/components/shared";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -57,11 +59,10 @@ export default async function Page({ params }: Props) {
     <div className="container mx-auto px-5">
       <article className="grid md:grid-cols-2 space-x-6 md:space-x-24">
         <div>
-          <h1 className="text-balance mb-12 text-2xl font-bold leading-tight tracking-tighter md:text-6xl md:leading-none">
-            {publication.title}
-          </h1>
+          <DefaHeader>{publication.title}</DefaHeader>
           {publication.description?.length && (
             <PortableText
+              components={SanityComponents}
               value={publication.description as PortableTextBlock[]}
             />
           )}

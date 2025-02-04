@@ -29,7 +29,7 @@ export const projectType = defineType({
     }),
     defineField({
       name: "coverImage",
-      title: "Cover Image",
+      title: "Cover Image (eg. poster)",
       type: "image",
       options: {
         hotspot: true,
@@ -61,6 +61,12 @@ export const projectType = defineType({
       title: "Description",
       type: "array",
       of: [{ type: "block" }],
+    }),
+    defineField({
+      name: "galleries",
+      title: "Photo Galleries",
+      type: "array",
+      of: [{ type: "gallery" }],
     }),
   ],
   preview: {

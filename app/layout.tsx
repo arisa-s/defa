@@ -7,6 +7,7 @@ import { sanityFetch } from "@/sanity/lib/fetch";
 import { siteSettingsQuery } from "@/sanity/lib/queries";
 import { resolveOpenGraphImage } from "@/sanity/lib/image";
 import Footer from "@/components/shared/Footer";
+import Header from "@/components/shared/Header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await sanityFetch({
@@ -47,7 +48,8 @@ export default async function RootLayout({
     <html lang="en" className={`${montserrat.variable} antialiased`}>
       <body>
         <section>
-          <main className="min-h-screen px-6 py-12 max-w-6xl mx-auto">
+          <Header />
+          <main className="min-h-screen px-6 pt-24 max-w-6xl mx-auto">
             {children}
           </main>
           <Footer />

@@ -5,6 +5,9 @@ import { notFound } from "next/navigation";
 import { resolveOpenGraphImage } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { projectQuery } from "@/sanity/lib/queries/project";
+import DefaHeader from "@/components/shared/DefaHeader";
+import { SanityComponents } from "@/sanity/components";
+import DefaPhotoGallery from "@/components/shared/DefaPhotoGallery";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -55,12 +58,16 @@ export default async function Page({ params }: Props) {
   return (
     <div className="container mx-auto px-5">
       <article>
-        <h1 className="text-balance mb-12 text-6xl font-bold leading-tight tracking-tighter md:text-7xl md:leading-none lg:text-8xl">
-          {project.title}
-        </h1>
+        <DefaHeader>{project.title}</DefaHeader>
         {project.description?.length && (
-          <PortableText value={project.description as PortableTextBlock[]} />
+          <PortableText
+            components={SanityComponents}
+            value={project.description as PortableTextBlock[]}
+          />
         )}
+        {project.galleries?.map((gallery, index) => (
+          <DefaPhotoGallery key={index} gallery={gallery} />
+        ))}
       </article>
       <aside></aside>
     </div>

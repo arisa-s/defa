@@ -2,14 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* You can keep or remove these if already declared elsewhere */
 :root {
-  --background: #cfe2f3;
-  --foreground: #980000;
+  --font-montserrat: 'Montserrat', sans-serif;
+
+  /* ---------------------
+     Text color variables
+     --------------------- */
+  --text-primary: #980000;
+  --text-secondary: #3a3a3a;
+  --text-tertiary: #555555;
+  --text-dimmed: #777777;
+  --text-link: #0645ad;
+  --text-invert: #ffffff;
+  --text-accent: #ff6600; /* or any accent color that fits the brand */
+
+  /* ------------------------
+     Background color variables
+     ------------------------ */
+  --bg-primary: #cfe2f3; /* as requested */
+  --bg-secondary: #e6edf5; 
+  --bg-component: #ffffff;
+  --bg-neutral: #f4f4f4;
+
+  /* ---------------------
+     Border color variables
+     --------------------- */
+  --border-primary: #980000;
+  --border-secondary: #888888;
+  --border-component: #cccccc;
 }
 
-
+/* Apply “primary” as the default text and background for body */
 body {
-  color: var(--foreground);
-  background: var(--background);
+  @apply text-primary bg-primary;
   font-family: var(--font-montserrat);
 }

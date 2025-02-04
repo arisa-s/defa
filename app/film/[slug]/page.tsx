@@ -6,6 +6,8 @@ import { resolveOpenGraphImage } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { filmQuery } from "@/sanity/lib/queries/film";
 import { VideoPlayer } from "@/components/film";
+import DefaHeader from "@/components/shared/DefaHeader";
+import { SanityComponents } from "@/sanity/components";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -54,11 +56,12 @@ export default async function Page({ params }: Props) {
   return (
     <div className="container mx-auto px-5">
       <article className="space-y-12">
-        <h1 className="text-balance mb-12 text-4xl md:text-6xl font-bold leading-tight tracking-tighter md:leading-none ">
-          {film.title}
-        </h1>
+        <DefaHeader>{film.title}</DefaHeader>
         {film.description?.length && (
-          <PortableText value={film.description as PortableTextBlock[]} />
+          <PortableText
+            components={SanityComponents}
+            value={film.description as PortableTextBlock[]}
+          />
         )}
         <div className="flex flex-col space-t-6 md: space-y-12">
           {film.videos?.map((video) => (
@@ -73,7 +76,10 @@ export default async function Page({ params }: Props) {
                   {video.title}
                 </h2>
                 {video.caption?.length && (
-                  <PortableText value={video.caption as PortableTextBlock[]} />
+                  <PortableText
+                    components={SanityComponents}
+                    value={video.caption as PortableTextBlock[]}
+                  />
                 )}
               </div>
             </div>

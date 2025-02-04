@@ -46,6 +46,26 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Gallery = {
+  _type: "gallery";
+  title: string;
+  images?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+  display?: "stacked" | "inline" | "carousel";
+  zoom?: boolean;
+};
+
 export type Video = {
   _type: "video";
   title?: string;
@@ -249,6 +269,9 @@ export type Project = {
     _type: "block";
     _key: string;
   }>;
+  galleries?: Array<{
+    _key: string;
+  } & Gallery>;
 };
 
 export type Publication = {
@@ -354,29 +377,8 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | Geopoint | Video | Settings | About | Film | SanityFileAsset | Project | Publication | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | Geopoint | Gallery | Video | Settings | About | Film | SanityFileAsset | Project | Publication | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
-// Source: ./app/film/[slug]/index.tsx
-// Variable: filmSlugs
-// Query: *[_type == "film" && defined(slug.current)]{"slug": slug.current}
-export type FilmSlugsResult = Array<{
-  slug: string;
-}>;
-
-// Source: ./app/project/[slug]/page.tsx
-// Variable: projectSlugs
-// Query: *[_type == "project" && defined(slug.current)]{"slug": slug.current}
-export type ProjectSlugsResult = Array<{
-  slug: string;
-}>;
-
-// Source: ./app/publication/[slug]/page.tsx
-// Variable: publicationSlugs
-// Query: *[_type == "publication" && defined(slug.current)]{"slug": slug.current}
-export type PublicationSlugsResult = Array<{
-  slug: string;
-}>;
-
 // Source: ./sanity/lib/queries/about.ts
 // Variable: aboutQuery
 // Query: *[_type == "about"][0]
@@ -479,7 +481,7 @@ export type FilmsQueryResult = Array<{
 
 // Source: ./sanity/lib/queries/project.ts
 // Variable: projectQuery
-// Query: *[_type == "project" && slug.current == $slug] [0] {      content,        _id,  "title": coalesce(title, "Untitled"),  "slug": slug.current,  description,  excerpt,  coverImage,  date,  endDate    }
+// Query: *[_type == "project" && slug.current == $slug] [0] {      content,        _id,  "title": coalesce(title, "Untitled"),  "slug": slug.current,  description,  excerpt,  coverImage,  date,  endDate,  galleries    }
 export type ProjectQueryResult = {
   content: null;
   _id: string;
@@ -517,6 +519,9 @@ export type ProjectQueryResult = {
   };
   date: string | null;
   endDate: string | null;
+  galleries: Array<{
+    _key: string;
+  } & Gallery> | null;
 } | null;
 // Variable: projectsQuery
 // Query: *[_type == "project"] {          _id,    "title": coalesce(title, "Untitled"),    "slug": slug.current,    excerpt,    coverImage,     }
@@ -640,20 +645,41 @@ export type SiteSettingsQueryResult = {
   };
 } | null;
 
+// Source: ./app/film/[slug]/page.tsx
+// Variable: filmSlugs
+// Query: *[_type == "film" && defined(slug.current)]{"slug": slug.current}
+export type FilmSlugsResult = Array<{
+  slug: string;
+}>;
+
+// Source: ./app/project/[slug]/page.tsx
+// Variable: projectSlugs
+// Query: *[_type == "project" && defined(slug.current)]{"slug": slug.current}
+export type ProjectSlugsResult = Array<{
+  slug: string;
+}>;
+
+// Source: ./app/publication/[slug]/page.tsx
+// Variable: publicationSlugs
+// Query: *[_type == "publication" && defined(slug.current)]{"slug": slug.current}
+export type PublicationSlugsResult = Array<{
+  slug: string;
+}>;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"film\" && defined(slug.current)]{\"slug\": slug.current}": FilmSlugsResult;
-    "*[_type == \"project\" && defined(slug.current)]{\"slug\": slug.current}": ProjectSlugsResult;
-    "*[_type == \"publication\" && defined(slug.current)]{\"slug\": slug.current}": PublicationSlugsResult;
     "*[_type == \"about\"][0]": AboutQueryResult;
     "\n  *[_type == \"film\" && slug.current == $slug][0] {\n    \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  description,\n  coverImage,\n  videos[] {\n    title,\n    thumbnail,\n    \"videoFile\": videoFile.asset->url,\n    caption\n  }\n\n  }\n": FilmQueryResult;
     "\n  *[_type == \"film\"] {\n    \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  coverImage\n\n  }\n": FilmsQueryResult;
-    "\n    *[_type == \"project\" && slug.current == $slug] [0] {\n      content,\n      \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  description,\n  excerpt,\n  coverImage,\n  date,\n  endDate\n\n    }\n  ": ProjectQueryResult;
+    "\n    *[_type == \"project\" && slug.current == $slug] [0] {\n      content,\n      \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  description,\n  excerpt,\n  coverImage,\n  date,\n  endDate,\n  galleries\n\n    }\n  ": ProjectQueryResult;
     "\n    *[_type == \"project\"] {\n      \n    _id,\n    \"title\": coalesce(title, \"Untitled\"),\n    \"slug\": slug.current,\n    excerpt,\n    coverImage,\n \n    }\n  ": ProjectsQueryResult;
     "\n    *[_type == \"publication\" && slug.current == $slug] [0] {\n      content,\n      \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  description,\n  excerpt,\n  coverImage,\n\n    }\n  ": PublicationQueryResult;
     "\n    *[_type == \"publication\"] {\n      \n    _id,\n    \"title\": coalesce(title, \"Untitled\"),\n    \"slug\": slug.current,\n    excerpt,\n    coverImage,\n \n    }\n  ": PublicationsQueryResult;
     "*[_type == \"settings\"][0]": SiteSettingsQueryResult;
+    "*[_type == \"film\" && defined(slug.current)]{\"slug\": slug.current}": FilmSlugsResult;
+    "*[_type == \"project\" && defined(slug.current)]{\"slug\": slug.current}": ProjectSlugsResult;
+    "*[_type == \"publication\" && defined(slug.current)]{\"slug\": slug.current}": PublicationSlugsResult;
   }
 }

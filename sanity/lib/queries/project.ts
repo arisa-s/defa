@@ -8,7 +8,8 @@ const projectFields = /* groq */ `
   excerpt,
   coverImage,
   date,
-  endDate
+  endDate,
+  galleries
 `;
 
 const projectSummaryFields = /* groq */ `
