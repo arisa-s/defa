@@ -1,10 +1,10 @@
-import { Gallery, SanityImageAsset } from "@/sanity.types";
 import { urlForImage } from "@/sanity/lib/image";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { Image } from "next-sanity/image";
 import { FC } from "react";
 
 export interface DefaPhotoGalleryProps {
-  images: any;
+  images: SanityImageSource[];
 }
 
 export const DefaPhotoGallery: FC<DefaPhotoGalleryProps> = ({ images }) => {
@@ -14,7 +14,7 @@ export const DefaPhotoGallery: FC<DefaPhotoGalleryProps> = ({ images }) => {
         <Image
           key={index}
           className="h-auto w-full"
-          alt={image.alt || "defa image"}
+          alt={"defa image"}
           width={1400}
           height={2000}
           src={urlForImage(image).url() as string}
