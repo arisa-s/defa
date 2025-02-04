@@ -71,6 +71,7 @@ const DefaCarouselGallery: FC<DefaPhotoGalleryProps> = ({ images }) => {
                 src={urlForImage(image).width(width).height(height).url()}
                 width={width}
                 height={height}
+                className="w-full h-auto"
               />
             </div>
           );
