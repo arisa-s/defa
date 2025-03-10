@@ -1,10 +1,7 @@
-import { VideoPlayer } from "@/components/film";
-import { DefaHeader } from "@/components/shared";
-import { SanityComponents } from "@/sanity/components";
+import { FilmCard } from "@/components/film";
 import { sanityFetch } from "@/sanity/lib/fetch";
+import { urlForImage } from "@/sanity/lib/image";
 import { filmsQuery } from "@/sanity/lib/queries";
-import { PortableText } from "next-sanity";
-import { PortableTextBlock } from "sanity";
 
 export async function generateStaticParams() {
   return await sanityFetch({
@@ -16,47 +13,18 @@ export default async function Page() {
   const [films] = await Promise.all([sanityFetch({ query: filmsQuery })]);
 
   return (
-    <div className="mx-auto mb-24">
+    <div className="mx-auto mb-24 grid grid-cols-2 2xl:grid-cols-3 gap-24 max-w-3xl 2xl:max-w-7xl">
       {films.map((film) => (
-        <div className="mx-auto" key={film._id}>
-          <article className="space-y-12">
-            <div>
-              <DefaHeader type="h2">{film.title}</DefaHeader>
-              {film.description?.length && (
-                <PortableText
-                  components={SanityComponents}
-                  value={film.description as PortableTextBlock[]}
-                />
-              )}
-            </div>
-            <div className="flex flex-col space-y-12">
-              {film.videos?.map((video) => (
-                <div
-                  key={video.title}
-                  className="flex flex-col md:flex-row gap-6 md:gap-24"
-                >
-                  <VideoPlayer
-                    thumbnail={video.thumbnail!}
-                    video={video.videoFile!}
-                    className="max-w-xl"
-                  />
-                  <div className="space-y-4 text-right">
-                    <h2 className="text-4xl md:text-5xl font-alternative">
-                      {video.title}
-                    </h2>
-                    {video.caption?.length && (
-                      <PortableText
-                        components={SanityComponents}
-                        value={video.caption as PortableTextBlock[]}
-                      />
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </article>
-          <aside></aside>
-        </div>
+        <FilmCard
+          slug={film.slug}
+          title={film.title}
+          key={film._id}
+          imageUrl={
+            film.coverImage
+              ? urlForImage(film.coverImage).width(768).height(1024).url() || ""
+              : ""
+          }
+        />
       ))}
     </div>
   );

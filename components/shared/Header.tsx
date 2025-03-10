@@ -9,10 +9,10 @@ import { useClickOutside } from "@/utils";
 
 const LINKS = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
   { href: "/project", label: "Projects" },
   { href: "/publication", label: "Publications" },
   { href: "/film", label: "Films" },
+  { href: "/about", label: "About" },
 ];
 
 const NavLink = ({
@@ -29,7 +29,7 @@ const NavLink = ({
       href={href}
       className={`${
         selected ? "text-primary font-medium underline" : "text-muted"
-      } hover:underline hover:text-primary hover:font-medium uppercase text-xs font-accent`}
+      } text-lg hover:underline hover:text-primary hover:font-medium uppercase text-xs font-accent`}
     >
       {children}
     </Link>
@@ -76,13 +76,13 @@ const MobileHeader: React.FC = () => {
   }, [pathname]);
 
   return (
-    <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
+    <div className="max-w-8xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
       <Link href="/">
         <Image
-          className="w-24 cursor-pointer"
-          src="/logoHeader.png"
-          width={1144}
-          height={514}
+          className="w-12 cursor-pointer"
+          src="/logo.png"
+          width={2709}
+          height={2708}
           alt="Studio Defa"
         />
       </Link>
@@ -142,13 +142,13 @@ const MobileHeader: React.FC = () => {
 };
 
 const DesktopHeader: React.FC = () => (
-  <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
+  <div className="max-w-8xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16">
     <Link href="/">
       <Image
-        className="absolute top-4 w-24 cursor-pointer"
-        src="/logoHeader.png"
-        width={1144}
-        height={514}
+        className="absolute top-4 w-16 cursor-pointer"
+        src="/logo.png"
+        width={2709}
+        height={2708}
         alt="Studio Defa"
       />
     </Link>

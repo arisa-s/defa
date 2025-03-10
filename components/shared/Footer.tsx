@@ -3,7 +3,7 @@ import { FC } from "react";
 
 export const Footer: FC = () => {
   return (
-    <footer className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
+    <footer className="max-w-8xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
       <SocialLink
         href="https://www.nekonote.co/"
         label=" "

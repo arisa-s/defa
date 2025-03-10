@@ -182,6 +182,17 @@ export type Film = {
   _updatedAt: string;
   _rev: string;
   title: string;
+  coverImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
   slug: Slug;
   excerpt?: string;
   description?: Array<{
@@ -248,7 +259,7 @@ export type Project = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  date?: string;
+  date: string;
   endDate?: string;
   excerpt?: string;
   description?: Array<{
@@ -467,7 +478,17 @@ export type FilmQueryResult = {
     _type: "block";
     _key: string;
   }> | null;
-  coverImage: null;
+  coverImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
   videos: Array<{
     title: string | null;
     thumbnail: {
@@ -527,7 +548,17 @@ export type FilmsQueryResult = Array<{
     _type: "block";
     _key: string;
   }> | null;
-  coverImage: null;
+  coverImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
   videos: Array<{
     title: string | null;
     thumbnail: {
@@ -601,7 +632,7 @@ export type ProjectQueryResult = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  date: string | null;
+  date: string;
   endDate: string | null;
   galleries: Array<{
     _key: string;
@@ -609,7 +640,7 @@ export type ProjectQueryResult = {
   featured: FeaturedImages | null;
 } | null;
 // Variable: projectsQuery
-// Query: *[_type == "project"] {          _id,    "title": coalesce(title, "Untitled"),    "slug": slug.current,    excerpt,    coverImage,     }
+// Query: *[_type == "project"] {          _id,    "title": coalesce(title, "Untitled"),    "slug": slug.current,    excerpt,    coverImage,    date     }
 export type ProjectsQueryResult = Array<{
   _id: string;
   title: string;
@@ -626,6 +657,7 @@ export type ProjectsQueryResult = Array<{
     crop?: SanityImageCrop;
     _type: "image";
   };
+  date: string;
 }>;
 
 // Source: ./sanity/lib/queries/publication.ts
@@ -803,7 +835,7 @@ declare module "@sanity/client" {
     "\n  *[_type == \"film\" && slug.current == $slug][0] {\n    \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  description,\n  coverImage,\n  videos[] {\n    title,\n    thumbnail,\n    \"videoFile\": videoFile.asset->url,\n    caption\n  }\n\n  }\n": FilmQueryResult;
     "\n  *[_type == \"film\"] {\n    \n _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  description,\n  coverImage,\n  videos[] {\n    title,\n    thumbnail,\n    \"videoFile\": videoFile.asset->url,\n    caption\n  }\n\n  }\n": FilmsQueryResult;
     "\n    *[_type == \"project\" && slug.current == $slug] [0] {\n      content,\n      \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  description,\n  excerpt,\n  coverImage,\n  date,\n  endDate,\n  galleries,\n  featured\n\n    }\n  ": ProjectQueryResult;
-    "\n    *[_type == \"project\"] {\n      \n    _id,\n    \"title\": coalesce(title, \"Untitled\"),\n    \"slug\": slug.current,\n    excerpt,\n    coverImage,\n \n    }\n  ": ProjectsQueryResult;
+    "\n    *[_type == \"project\"] {\n      \n    _id,\n    \"title\": coalesce(title, \"Untitled\"),\n    \"slug\": slug.current,\n    excerpt,\n    coverImage,\n    date\n \n    }\n  ": ProjectsQueryResult;
     "\n    *[_type == \"publication\" && slug.current == $slug] [0] {\n      content,\n      \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  description,\n  excerpt,\n  previews,\n  coverImage,\n  credit\n\n    }\n  ": PublicationQueryResult;
     "\n    *[_type == \"publication\"] {\n      \n    _id,\n    \"title\": coalesce(title, \"Untitled\"),\n    \"slug\": slug.current,\n    description,\n    excerpt,\n    coverImage,\n    previews,\n    credit\n \n    }\n  ": PublicationsQueryResult;
     "*[_type == \"settings\"][0]": SiteSettingsQueryResult;

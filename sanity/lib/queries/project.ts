@@ -19,6 +19,7 @@ const projectSummaryFields = /* groq */ `
     "slug": slug.current,
     excerpt,
     coverImage,
+    date
  `;
 
 export const projectQuery = defineQuery(`

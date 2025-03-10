@@ -12,7 +12,7 @@ export const DefaParahraph: FC<DefaParahraphProps> = ({
   className,
   ...props
 }) => {
-  return <p className={`md:text-lg ${className}`} {...props}></p>;
+  return <p className={`${className}`} {...props}></p>;
 };
 
 export default DefaParahraph;

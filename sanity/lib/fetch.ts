@@ -1,5 +1,5 @@
 import type { ClientPerspective, QueryParams } from "next-sanity";
-import { draftMode } from "next/headers";
+// import { draftMode } from "next/headers";
 
 import { sanityClient } from "@/sanity/lib/client";
 import { token } from "@/sanity/lib/token";
@@ -26,10 +26,7 @@ export async function sanityFetch<const QueryString extends string>({
   perspective?: Omit<ClientPerspective, "raw">;
   stega?: boolean;
 }) {
-  const perspective =
-    _perspective || (await draftMode()).isEnabled
-      ? "previewDrafts"
-      : "published";
+  const perspective = _perspective ? "previewDrafts" : "published";
   const stega =
     _stega ||
     perspective === "previewDrafts" ||

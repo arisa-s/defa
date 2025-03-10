@@ -7,6 +7,7 @@
   --font-montserrat: 'Montserrat', sans-serif;
   --font-young-serif: 'Young Serif', serif;
   --font-monoton: "Monoton", serif;
+  --font-agrandir: "Agrandir"
 
   /* ---------------------
      Text color variables
@@ -38,6 +39,7 @@
 /* Apply “primary” as the default text and background for body */
 body {
   @apply text-primary bg-primary;
-  font-family: var(--font-montserrat);
-   border-color: var(--border-primary);
+  font-family: var(--font-agrandir);
+  border-color: var(--border-primary);
+  font-size: 0.75rem
 }

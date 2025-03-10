@@ -22,8 +22,8 @@ export const DefaHeader: FC<DefaHeaderProps> = ({
       return (
         <h1
           className={`
-            text-balance mb-12 text-4xl font-bold leading-tight tracking-tighter
-            md:text-5xl md:leading-none lg:text-6xl font-accent
+            text-balance
+            md:text-lg md:leading-none font-accent
             ${className}
           `}
           {...props}
@@ -78,7 +78,7 @@ export const DefaHeader: FC<DefaHeaderProps> = ({
         <h6
           className={`
             text-balance mb-2 text-base font-medium leading-tight
-            md:text-lg font-accent
+            md:text-base font-accent
             ${className}
           `}
           {...props}

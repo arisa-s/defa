@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { montserrat, youngSerif } from "@/lib/font";
+import { agrandir, montserrat, youngSerif } from "@/lib/font";
 import { toPlainText } from "next-sanity";
 
 import { sanityFetch } from "@/sanity/lib/fetch";
@@ -45,7 +45,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${youngSerif.variable} antialiased`}
+      className={`${montserrat.variable} ${youngSerif.variable} ${agrandir.variable} antialiased`}
     >
       <body>{children}</body>
     </html>

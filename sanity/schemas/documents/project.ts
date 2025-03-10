@@ -41,6 +41,7 @@ export const projectType = defineType({
       title: "Date",
       type: "datetime",
       initialValue: undefined,
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "endDate",

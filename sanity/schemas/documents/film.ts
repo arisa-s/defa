@@ -14,6 +14,14 @@ export const filmType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "coverImage",
+      title: "Cover Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",

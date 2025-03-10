@@ -3,11 +3,11 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { type PortableTextBlock } from "next-sanity";
 import { notFound } from "next/navigation";
 import { resolveOpenGraphImage } from "@/sanity/lib/image";
-import CoverImage from "@/components/publication/CoverImage";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { publicationQuery } from "@/sanity/lib/queries/publication";
 import { SanityComponents } from "@/sanity/components";
 import { DefaHeader } from "@/components/shared";
+import DefaCarouselGallery from "@/components/shared/gallery/DefaCarouselGallery";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -58,22 +58,27 @@ export default async function Page({ params }: Props) {
   return (
     <div className=" mx-auto px-5">
       <article className="grid md:grid-cols-2 space-x-6 md:space-x-24">
-        <div>
-          <DefaHeader>{publication.title}</DefaHeader>
-          {publication.description?.length && (
-            <PortableText
-              components={SanityComponents}
-              value={publication.description as PortableTextBlock[]}
+        <DefaHeader type="h2">{publication.title}</DefaHeader>
+        <div className="grid md:grid-cols-2 gap-6 md:gap-12">
+          <div className="flex flex-col md:order-last md:space-y-6 max-w-xs md:max-w-lg w-full mx-auto">
+            <DefaCarouselGallery
+              images={[
+                { ...publication.coverImage, _key: publication._id },
+                ...publication.previews!,
+              ]}
             />
-          )}
+          </div>
+          <div className="md:order-first">
+            {publication.description?.length && (
+              <PortableText
+                components={SanityComponents}
+                value={publication.description as PortableTextBlock[]}
+              />
+            )}
+          </div>
         </div>
-        <div className="content-center">
-          <CoverImage
-            image={publication.coverImage}
-            priority
-            alt={publication.title}
-          />
-        </div>
+        <hr className="my-6 md:mt-12 mb:mb-6" />
+        <p className="text-xs text-right">{publication.credit}</p>
       </article>
       <aside></aside>
     </div>

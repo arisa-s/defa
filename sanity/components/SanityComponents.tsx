@@ -82,22 +82,18 @@ export const SanityComponents: Partial<PortableTextReactComponents> = {
   list: {
     // Ex. 1: customizing common list types
     bullet: ({ children }) => (
-      <ul className="md:text-lg list-inside list-disc">{children}</ul>
+      <ul className="list-inside list-disc">{children}</ul>
     ),
     number: ({ children }) => (
-      <ol className="md:text-lg list-outside list-decimal">{children}</ol>
+      <ol className="list-outside list-decimal">{children}</ol>
     ),
   },
   listItem: {
     bullet: ({ children }) => (
-      <li className="list leading-8 md:text-lg md:leading-9 mb-1 md:mb-2">
-        - {children}
-      </li>
+      <li className="list leading-8 md:leading-9 mb-1 md:mb-2">- {children}</li>
     ),
     number: ({ children }) => (
-      <li className="list pl-2 leading-8 md:text-lg md:leading-9">
-        {children}
-      </li>
+      <li className="list pl-2 leading-8 md:leading-9">{children}</li>
     ),
   },
   // Add the 'types' property to handle custom object types like 'instagram'
