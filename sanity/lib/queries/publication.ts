@@ -8,7 +8,8 @@ const publicationFields = /* groq */ `
   excerpt,
   previews,
   coverImage,
-  credit
+  contributors,
+  credits
 `;
 
 const publicationSummaryFields = /* groq */ `
@@ -19,7 +20,7 @@ const publicationSummaryFields = /* groq */ `
     excerpt,
     coverImage,
     previews,
-    credit
+    credits
  `;
 
 export const publicationQuery = defineQuery(`

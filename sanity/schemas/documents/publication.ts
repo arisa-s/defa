@@ -49,14 +49,32 @@ export const publicationType = defineType({
         "This ends up on summary pages, on Google, when people share your publication on social media, etc.",
     }),
     defineField({
-      name: "description",
-      title: "description",
+      name: "contributors",
       type: "array",
       of: [{ type: "block" }],
     }),
     defineField({
-      name: "credit",
-      title: "Credits",
+      name: "credits",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              name: "name",
+              type: "string",
+            },
+            {
+              name: "creditType",
+              type: "string",
+            },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: "description",
+      title: "description",
       type: "text",
     }),
   ],

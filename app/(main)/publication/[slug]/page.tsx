@@ -2,12 +2,19 @@ import { defineQuery, PortableText } from "next-sanity";
 import type { Metadata, ResolvingMetadata } from "next";
 import { type PortableTextBlock } from "next-sanity";
 import { notFound } from "next/navigation";
-import { resolveOpenGraphImage } from "@/sanity/lib/image";
+import { resolveOpenGraphImage, urlForImage } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { publicationQuery } from "@/sanity/lib/queries/publication";
 import { SanityComponents } from "@/sanity/components";
 import { DefaHeader } from "@/components/shared";
-import DefaCarouselGallery from "@/components/shared/gallery/DefaCarouselGallery";
+import DefaInlineCarousel from "@/components/shared/gallery/DefaInlineCarousel";
+import Link from "next/link";
+import { Image } from "next-sanity/image";
+
+interface Credit {
+  name: string;
+  creditType: string;
+}
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -56,31 +63,73 @@ export default async function Page({ params }: Props) {
   }
 
   return (
-    <div className=" mx-auto px-5">
-      <article className="grid md:grid-cols-2 space-x-6 md:space-x-24">
-        <DefaHeader type="h2">{publication.title}</DefaHeader>
-        <div className="grid md:grid-cols-2 gap-6 md:gap-12">
-          <div className="flex flex-col md:order-last md:space-y-6 max-w-xs md:max-w-lg w-full mx-auto">
-            <DefaCarouselGallery
-              images={[
-                { ...publication.coverImage, _key: publication._id },
-                ...publication.previews!,
-              ]}
-            />
+    <div className="flex flex-col px-5 space-y-12">
+      <article className="flex flex-col md:flex-row gap-6">
+        <div className="flex md:flex-col space-y-4 justify-between">
+          <div className="space-y-2">
+            <Link href="/publications" className="text-4xl">
+              ⟵
+            </Link>
+            <DefaHeader type="h1">{publication.title}</DefaHeader>
           </div>
-          <div className="md:order-first">
+
+          <Image
+            src={urlForImage(publication.coverImage)?.url() as string}
+            alt={publication.title}
+            width={200}
+            height={280}
+            className="md:hidden ml-auto w-full max-w-[200px] h-full object-cover"
+          />
+        </div>
+        <div className="md:max-w-lg lg:max-w-2xl ml-auto">
+          <span>OVERVIEW</span>
+          <div className="-mx-6 md:-mx-12 text-3xl md:text-4xl font-medium text-slate-800 leading-6 md:leading-8">
             {publication.description?.length && (
+              <p>{publication.description}</p>
+            )}
+          </div>
+        </div>
+      </article>
+      <div className="relative flex md:space-x-24 w-full justify-between">
+        <div className="flex flex-col lg:flex-row max-w-md justify-between w-full">
+          <span>CONTRIBUTORS</span>
+          <div className="text-sm">
+            {publication.contributors && (
               <PortableText
                 components={SanityComponents}
-                value={publication.description as PortableTextBlock[]}
+                value={publication.contributors as PortableTextBlock[]}
               />
             )}
           </div>
         </div>
-        <hr className="my-6 md:mt-12 mb:mb-6" />
-        <p className="text-xs text-right">{publication.credit}</p>
-      </article>
-      <aside></aside>
+        {publication.credits && publication.credits.length > 0 && (
+          <div className="flex max-w-xs justify-between w-full">
+            <div className="text-sm">
+              <ul className="space-y-4">
+                {publication.credits.map((credit) => (
+                  <li key={credit._key} className="flex flex-col">
+                    <label className="uppercase">{credit.creditType}</label>
+                    <span>{credit.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+        <Image
+          src={urlForImage(publication.coverImage)?.url() as string}
+          alt={publication.title}
+          width={200}
+          height={280}
+          className="hidden md:block w-full max-w-[200px] h-full object-cover"
+        />
+      </div>
+      {publication.previews && (
+        <div className="">
+          <span>PREVIEW</span>
+          <DefaInlineCarousel images={publication.previews} />
+        </div>
+      )}
     </div>
   );
 }
