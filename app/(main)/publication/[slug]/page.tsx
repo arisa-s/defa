@@ -11,11 +11,6 @@ import DefaInlineCarousel from "@/components/shared/gallery/DefaInlineCarousel";
 import Link from "next/link";
 import { Image } from "next-sanity/image";
 
-interface Credit {
-  name: string;
-  creditType: string;
-}
-
 type Props = {
   params: Promise<{ slug: string }>;
 };
