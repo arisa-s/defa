@@ -48,7 +48,7 @@ export const YokoMenu = () => {
                 // Anchor the bubble’s bottom edge:
                 className="absolute -bottom-1.5 left-0"
               >
-                <div className="bg-primary rounded-md px-6 py-4 text-secondary border border-[#980000]">
+                <div className="text-left bg-primary rounded-md px-6 py-4 text-secondary border border-[#980000]">
                   {isMenuOpen ? (
                     <ul className="mt-2 space-y-1">
                       {LINKS.map((link) => (

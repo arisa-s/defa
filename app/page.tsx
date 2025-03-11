@@ -4,7 +4,7 @@ import YokoMenu from "@/components/shared/YokoMenu";
 
 export default function Home() {
   return (
-    <main className="p-6 md:p-12">
+    <main className="p-6 md:p-12 text-right md:text-left">
       <div>
         <h1 className="text-lg">Studio DEFA</h1>
       </div>
