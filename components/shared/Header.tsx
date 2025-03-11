@@ -86,7 +86,7 @@ const MobileHeader: React.FC = () => {
         </Link>
 
         {/* Page title */}
-        <h2 className="text-primary font-medium uppercase text-xs mr-20">
+        <h2 className="text-primary font-medium uppercase text-xs text-center">
           {displayPathname}
         </h2>
 
