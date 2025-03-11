@@ -56,7 +56,8 @@ export default function WelcomeModal({
               isActive
             />
             <span className="flex items-center justify-between">
-              <label className="text-sm uppercase text-secondary">
+              <label className="text-sm uppercase text-secondary flex items-center gap-2">
+                <div className="rounded-full bg-[#980000] w-2 h-2" />
                 NOW PLAYING
               </label>
               <span>{featuredVideo.title}</span>
