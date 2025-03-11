@@ -50,12 +50,13 @@ export const YokoMenu = () => {
               >
                 <div className="text-left bg-primary rounded-md px-6 py-4 text-secondary border border-[#980000]">
                   {isMenuOpen ? (
-                    <ul className="mt-2 space-y-1">
+                    <ul className="">
+                      <label className="text-sm font-normal">MENU</label>
                       {LINKS.map((link) => (
                         <li key={link.href}>
                           <Link
                             href={link.href}
-                            className="block text-3xl font-medium text-secondary hover:underline"
+                            className="block text-3xl font-bold text-secondary hover:underline leading-6"
                           >
                             {link.label}
                           </Link>

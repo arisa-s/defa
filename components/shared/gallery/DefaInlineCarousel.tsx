@@ -93,8 +93,8 @@ export default function DefaInlineCarousel({ images }: DefaPhotoGalleryProps) {
                     : "text-tertiary"
                 }`}
               >
-                <span>{item.alt}</span>
-                <span className="opacity-0">{item.alt}</span>
+                <span>{item.alt || item._key}</span>
+                <span className="opacity-0">{item.alt || item._key}</span>
               </button>
             ))}
           </div>
@@ -106,9 +106,7 @@ export default function DefaInlineCarousel({ images }: DefaPhotoGalleryProps) {
                 key={index}
                 onClick={() => handleThumbnailClick(index)}
                 className={`w-16 overflow-hidden transition-all duration-500 ${
-                  index === currentIndex
-                    ? "opacity-100 ring-2 ring-primary"
-                    : "opacity-25"
+                  index === currentIndex ? "opacity-100" : "opacity-25"
                 }`}
               >
                 <Image

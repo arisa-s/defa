@@ -5,12 +5,13 @@ import { decodeAssetId, urlForImage } from "@/sanity/lib/image";
 import { Image } from "next-sanity/image";
 import { DefaPhotoGalleryProps } from "../DefaPhotoGallery";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import { motion } from "framer-motion";
 
 const DefaGridGallery: FC<DefaPhotoGalleryProps> = ({ images }) => {
   if (!images || images.length === 0) return null;
 
   return (
-    <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+    <ResponsiveMasonry columnsCountBreakPoints={{ 350: 2, 900: 3, 1200: 4 }}>
       <Masonry>
         {images.map((image) => {
           if (!image.asset) return null;
@@ -22,14 +23,25 @@ const DefaGridGallery: FC<DefaPhotoGalleryProps> = ({ images }) => {
             .height(height)
             .url();
           return (
-            <Image
+            <motion.div
               key={image._key}
-              className="h-auto w-full"
-              alt={image.alt || "Defa Image"}
-              width={width}
-              height={height}
-              src={postImageUrl as string}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{
+                duration: 0.5,
+                delay: 0.1,
+              }}
+            >
+              <Image
+                key={image._key}
+                className="h-auto w-full"
+                alt={image.alt || "Defa Image"}
+                width={width}
+                height={height}
+                src={postImageUrl as string}
+              />
+            </motion.div>
           );
         })}
       </Masonry>

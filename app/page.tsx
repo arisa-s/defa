@@ -1,22 +1,23 @@
 "use client";
 import PageloadOverlay from "@/components/home/PageloadOverlay";
 import YokoMenu from "@/components/shared/YokoMenu";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="p-6 md:p-12 text-right md:text-left">
-      <div>
-        <h1 className="text-lg">Studio DEFA</h1>
-      </div>
-      <div className="grid md:grid-cols-2 max-w-2xl gap-6 w-full ml-auto">
-        <div className="flex flex-col space-y-6 md:space-y-12">
+    <main className="p-6 md:p-12 text-right">
+      <div className="grid md:grid-cols-5 max-w-4xl gap-12 w-full ml-auto">
+        <div className="flex flex-col space-y-6 md:space-y-12 md:col-span-2">
           <h2>Current</h2>
           <p className="text-secondary italic">
             The Archive of Lost Wonders
             <br />6 - 20 March 2025
           </p>
+          <p className="text-secondary italic">
+            309 Bethnal Green Road, E2 6AH
+          </p>
         </div>
-        <div className="flex flex-col space-y-6 md:space-y-12">
+        <div className="flex flex-col space-y-6 md:space-y-12 md:col-span-2">
           <h2>Events</h2>
           <ul className="space-y-4 text-secondary italic">
             <li>
@@ -54,6 +55,19 @@ export default function Home() {
             <li>
               Hangry x Jamal Supper Club
               <br /> Saturday, 22 March - 20.00
+            </li>
+          </ul>
+        </div>
+        <div className="flex flex-col space-y-6 md:space-y-12 md:col-span-1">
+          <h1 className="">Studio DEFA</h1>
+          <ul className="space-y4 text-secondary italic">
+            <li>
+              <Link href="mailto:noor@studiodefa.com">noor@studiodefa.com</Link>
+            </li>
+            <li>
+              <Link href="https://www.instagram.com/studio.defa">
+                @studio.defa
+              </Link>
             </li>
           </ul>
         </div>

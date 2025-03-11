@@ -99,7 +99,7 @@ export default function ProjectsGrid({
               />
             </div>
           </div>
-          <p className="group-hover:animate-bounce -my-2 z-20">
+          <p className="group-hover:animate-bounce -my-2 z-20 ml-auto">
             {selectedProject.title}
             <span className="ml-2 text-3xl">⟶</span>
           </p>

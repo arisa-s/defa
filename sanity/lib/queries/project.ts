@@ -10,7 +10,9 @@ const projectFields = /* groq */ `
   date,
   endDate,
   galleries,
-  featured
+  featured,
+  context,
+  contributors
 `;
 
 const projectSummaryFields = /* groq */ `

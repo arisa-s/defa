@@ -28,6 +28,12 @@ export const projectType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "context",
+      title: "Project Context",
+      type: "array",
+      of: [{ type: "block" }],
+    }),
+    defineField({
       name: "coverImage",
       title: "Cover Image (eg. poster)",
       type: "image",
@@ -35,6 +41,12 @@ export const projectType = defineType({
         hotspot: true,
       },
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "contributors",
+      title: "Contributors",
+      type: "array",
+      of: [{ type: "block" }],
     }),
     defineField({
       name: "date",

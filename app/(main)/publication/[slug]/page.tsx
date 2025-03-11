@@ -97,7 +97,7 @@ export default async function Page({ params }: Props) {
         {publication.description ? (
           <div className="md:max-w-lg lg:max-w-2xl ml-auto">
             <span>OVERVIEW</span>
-            <div className="-mx-6 md:-mx-12 text-3xl md:text-4xl font-medium text-slate-800 leading-6 md:leading-8">
+            <div className="-mx-6 md:-mx-16 text-3xl md:text-4xl font-bold text-secondary leading-6 md:leading-8">
               {publication.description?.length && (
                 <p>{publication.description}</p>
               )}
