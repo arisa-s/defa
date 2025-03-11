@@ -76,7 +76,7 @@ export default async function Page({ params }: Props) {
   }
 
   return (
-    <div className="flex flex-col px-5 space-y-12">
+    <div className="flex flex-col px-2 space-y-12">
       <article className="flex flex-col md:flex-row gap-6">
         <div className="flex md:flex-col space-y-4 justify-between">
           <div className="space-y-2">
