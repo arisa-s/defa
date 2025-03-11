@@ -3,6 +3,14 @@ import { urlForImage } from "@/sanity/lib/image";
 import { publicationsQuery } from "@/sanity/lib/queries";
 import { Image } from "next-sanity/image";
 import Link from "next/link";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+
+interface Publication {
+  _id: string;
+  slug: string;
+  title: string;
+  coverImage: SanityImageSource;
+}
 
 export default async function Page() {
   const [publications] = await Promise.all([
@@ -18,7 +26,7 @@ export default async function Page() {
         <div
           className={`${publications.length <= 3 ? `grid-cols-2 sm:grid-cols-${publications.length}` : "sm:grid-cols-3 md:grid-cols-4"} grid gap-12 md:gap-52`}
         >
-          {publications.map((p) => {
+          {publications.map((p: Publication) => {
             return (
               <Link href={`/publication/${p.slug}`} key={p._id}>
                 <article
