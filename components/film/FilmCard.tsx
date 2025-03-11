@@ -18,8 +18,9 @@ export const FilmCard: FC<FilmsCardProps> = ({
   return (
     <Link href={`/film/${slug}`}>
       <div className="group max-w-[250px] w-full aspect-[2/3] [perspective:1000px]">
-        <div className="col-span-1 w-full aspect-[2/3] border bg-secondary border-primary self-center items-center justify-center flex flex-col transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-          <div className="inset-0 h-full w-full text-center [backface-visibility:hidden] flex flex-col items-center justify-center relative">
+        <div className="relative col-span-1 w-full h-full border bg-secondary border-primary self-center items-center justify-center flex flex-col transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+          {/* front */}
+          <div className="absolute inset-0 h-full w-full text-center [-webkit-backface-visibility:hidden] [backface-visibility:hidden] flex flex-col items-center justify-center">
             <Image
               src={imageUrl}
               alt={title}
@@ -31,7 +32,8 @@ export const FilmCard: FC<FilmsCardProps> = ({
             <span className="z-10 font-medium max-w-[160px]">{title}</span>
           </div>
 
-          <div className="absolute inset-0 h-full w-full px-12 text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
+          {/* back */}
+          <div className="absolute z-50 inset-0 h-full w-full px-4 text-center [transform:rotateY(180deg)] [-webkit-backface-visibility:hidden] [backface-visibility:hidden]">
             <div className="flex min-h-full flex-col items-center justify-center">
               <Image src={imageUrl} alt={title} width={200} height={300} />
               <div className="absolute inset-0 flex items-center justify-center">
