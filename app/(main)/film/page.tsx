@@ -8,7 +8,7 @@ interface Film {
   _id: string;
   slug: string;
   title: string;
-  coverImage: SanityImageSource;
+  coverImage: SanityImageSource | null;
   label?: string;
   publishedAt: string;
 }
