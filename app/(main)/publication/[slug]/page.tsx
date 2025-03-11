@@ -76,27 +76,32 @@ export default async function Page({ params }: Props) {
             className="md:hidden ml-auto w-full max-w-[200px] h-full object-cover"
           />
         </div>
-        <div className="md:max-w-lg lg:max-w-2xl ml-auto">
-          <span>OVERVIEW</span>
-          <div className="-mx-6 md:-mx-12 text-3xl md:text-4xl font-medium text-slate-800 leading-6 md:leading-8">
-            {publication.description?.length && (
-              <p>{publication.description}</p>
-            )}
+        {publication.description ? (
+          <div className="md:max-w-lg lg:max-w-2xl ml-auto">
+            <span>OVERVIEW</span>
+            <div className="-mx-6 md:-mx-12 text-3xl md:text-4xl font-medium text-slate-800 leading-6 md:leading-8">
+              {publication.description?.length && (
+                <p>{publication.description}</p>
+              )}
+            </div>
           </div>
-        </div>
+        ) : null}
       </article>
+
       <div className="relative flex md:space-x-24 w-full justify-between">
-        <div className="flex flex-col lg:flex-row max-w-md justify-between w-full">
-          <span>CONTRIBUTORS</span>
-          <div className="text-sm">
-            {publication.contributors && (
-              <PortableText
-                components={SanityComponents}
-                value={publication.contributors as PortableTextBlock[]}
-              />
-            )}
+        {publication.contributors?.length || 0 > 0 ? (
+          <div className="flex flex-col lg:flex-row max-w-md justify-between w-full">
+            <span>CONTRIBUTORS</span>
+            <div className="text-sm">
+              {publication.contributors && (
+                <PortableText
+                  components={SanityComponents}
+                  value={publication.contributors as PortableTextBlock[]}
+                />
+              )}
+            </div>
           </div>
-        </div>
+        ) : null}
         {publication.credits && publication.credits.length > 0 && (
           <div className="flex max-w-xs justify-between w-full">
             <div className="text-sm">
@@ -122,7 +127,9 @@ export default async function Page({ params }: Props) {
       {publication.previews && (
         <div className="">
           <span>PREVIEW</span>
-          <DefaInlineCarousel images={publication.previews} />
+          <div className="-mx-10 md:-mx-24">
+            <DefaInlineCarousel images={publication.previews} />
+          </div>
         </div>
       )}
     </div>

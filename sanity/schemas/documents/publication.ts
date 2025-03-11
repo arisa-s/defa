@@ -39,7 +39,23 @@ export const publicationType = defineType({
       name: "previews",
       title: "Preview",
       type: "array",
-      of: [{ type: "image" }],
+      of: [
+        {
+          name: "image",
+          type: "image",
+          title: "Image",
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            {
+              name: "alt",
+              type: "string",
+              title: "Alternative text",
+            },
+          ],
+        },
+      ],
     }),
     defineField({
       name: "excerpt",

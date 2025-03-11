@@ -11,24 +11,33 @@ export interface FilmsCardProps {
 export const FilmCard: FC<FilmsCardProps> = ({ slug, title, imageUrl }) => {
   return (
     <Link href={`/film/${slug}`}>
-      <div className="group max-w-xs md:max-w-sm w-full aspect-[2/3] [perspective:1000px]">
+      <div className="group max-w-[250px] w-full aspect-[2/3] [perspective:1000px]">
         <div className="col-span-1 w-full aspect-[2/3] border bg-secondary border-primary self-center items-center justify-center flex flex-col transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
           <div className="inset-0 h-full w-full text-center [backface-visibility:hidden] flex flex-col items-center justify-center relative">
             <Image
               src={imageUrl}
               alt={title}
-              width={200}
-              height={250}
-              className="opacity-30 absolute w-[200px] md:w-[250px]"
+              width={150}
+              height={200}
+              className="opacity-30 absolute w-[160px]"
             />
-            <span className="z-10 text-lg font-medium max-w-[200px] md:max-w-[250px]">
-              {title}
-            </span>
+            <span className="z-10 font-medium max-w-[160px]">{title}</span>
           </div>
 
           <div className="absolute inset-0 h-full w-full px-12 text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
             <div className="flex min-h-full flex-col items-center justify-center">
               <Image src={imageUrl} alt={title} width={200} height={300} />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="bg-[#cfe2f3]/80 p-3 rounded-full shadow-lg">
+                  <svg
+                    className="w-12 h-12 text-primary"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
         </div>

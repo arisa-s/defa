@@ -14,6 +14,8 @@ export const YokoMenu = () => {
     <div
       className="fixed bottom-0 left-0 z-4 cursor-pointer"
       onClick={toggleMenu}
+      onMouseEnter={() => setIsMenuOpen(true)}
+      onMouseLeave={() => setIsMenuOpen(false)}
     >
       <div className="relative">
         {/* Yoko image (clickable) */}
