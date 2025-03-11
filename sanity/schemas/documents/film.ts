@@ -1,10 +1,10 @@
-import { DocumentVideoIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
+import { PlayIcon } from "@sanity/icons";
 
 export const filmType = defineType({
   name: "film",
   title: "Film",
-  icon: DocumentVideoIcon,
+  icon: PlayIcon,
   type: "document",
   fields: [
     defineField({
@@ -12,6 +12,17 @@ export const filmType = defineType({
       title: "Title",
       type: "string",
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "publishedAt",
+      title: "Published At",
+      type: "datetime",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "label",
+      title: "Label",
+      type: "string",
     }),
     defineField({
       name: "coverImage",

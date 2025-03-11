@@ -60,14 +60,14 @@ export default function AnimatedFilmContent({
           className="text-center space-y-6 pt-12"
         >
           <DefaHeader>{film.title}</DefaHeader>
-          {film.description?.length && (
+          {film.description?.length ? (
             <div className="max-w-2xl mx-auto">
               <PortableText
                 components={SanityComponents}
                 value={film.description}
               />
             </div>
-          )}
+          ) : null}
         </motion.div>
 
         <div className="flex flex-col space-y-32 md:space-y-48 lg:space-y-64">
@@ -101,12 +101,12 @@ export default function AnimatedFilmContent({
                 }}
               >
                 <h2 className="text-lg">{video.title}</h2>
-                {video.caption?.length && (
+                {video.caption?.length ? (
                   <PortableText
                     components={SanityComponents}
                     value={video.caption}
                   />
-                )}
+                ) : null}
               </motion.div>
             </motion.div>
           ))}

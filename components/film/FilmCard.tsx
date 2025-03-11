@@ -5,10 +5,16 @@ import Link from "next/link";
 export interface FilmsCardProps {
   slug: string;
   title: string;
+  label?: string;
   imageUrl: string;
 }
 
-export const FilmCard: FC<FilmsCardProps> = ({ slug, title, imageUrl }) => {
+export const FilmCard: FC<FilmsCardProps> = ({
+  slug,
+  title,
+  label,
+  imageUrl,
+}) => {
   return (
     <Link href={`/film/${slug}`}>
       <div className="group max-w-[250px] w-full aspect-[2/3] [perspective:1000px]">
@@ -21,6 +27,7 @@ export const FilmCard: FC<FilmsCardProps> = ({ slug, title, imageUrl }) => {
               height={200}
               className="opacity-30 absolute w-[160px]"
             />
+            <label className="text-sm z-10 max-w-[160px]">{label}</label>
             <span className="z-10 font-medium max-w-[160px]">{title}</span>
           </div>
 

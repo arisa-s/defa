@@ -55,7 +55,7 @@ export const YokoMenu = () => {
                         <li key={link.href}>
                           <Link
                             href={link.href}
-                            className="block text-sm text-secondary hover:underline"
+                            className="block text-3xl font-medium text-secondary hover:underline"
                           >
                             {link.label}
                           </Link>

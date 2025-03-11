@@ -9,7 +9,8 @@ const publicationFields = /* groq */ `
   previews,
   coverImage,
   contributors,
-  credits
+  credits,
+  publishedAt
 `;
 
 const publicationSummaryFields = /* groq */ `
@@ -20,7 +21,8 @@ const publicationSummaryFields = /* groq */ `
     excerpt,
     coverImage,
     previews,
-    credits
+    credits,
+    publishedAt
  `;
 
 export const publicationQuery = defineQuery(`
@@ -31,7 +33,7 @@ export const publicationQuery = defineQuery(`
   `);
 
 export const publicationsQuery = defineQuery(`
-    *[_type == "publication"] {
+    *[_type == "publication"] | order(publishedAt desc) {
       ${publicationSummaryFields}
     }
   `);

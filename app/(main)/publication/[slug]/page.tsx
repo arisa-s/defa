@@ -8,8 +8,26 @@ import { publicationQuery } from "@/sanity/lib/queries/publication";
 import { SanityComponents } from "@/sanity/components";
 import { DefaHeader } from "@/components/shared";
 import DefaInlineCarousel from "@/components/shared/gallery/DefaInlineCarousel";
+import { DefaPhotoGalleryProps } from "@/components/shared/DefaPhotoGallery";
 import Link from "next/link";
 import { Image } from "next-sanity/image";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+
+interface Credit {
+  _key: string;
+  name: string;
+  creditType: string;
+}
+
+interface Publication {
+  _id: string;
+  title: string;
+  coverImage: SanityImageSource;
+  description?: string;
+  contributors?: PortableTextBlock[];
+  credits?: Credit[];
+  previews?: DefaPhotoGalleryProps["images"];
+}
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -49,9 +67,9 @@ export async function generateMetadata(
 }
 
 export default async function Page({ params }: Props) {
-  const [publication] = await Promise.all([
+  const [publication] = (await Promise.all([
     sanityFetch({ query: publicationQuery, params }),
-  ]);
+  ])) as [Publication];
 
   if (!publication?._id) {
     return notFound();
@@ -106,7 +124,7 @@ export default async function Page({ params }: Props) {
           <div className="flex max-w-xs justify-between w-full">
             <div className="text-sm">
               <ul className="space-y-4">
-                {publication.credits.map((credit) => (
+                {publication.credits.map((credit: Credit) => (
                   <li key={credit._key} className="flex flex-col">
                     <label className="uppercase">{credit.creditType}</label>
                     <span>{credit.name}</span>

@@ -182,6 +182,7 @@ export type Film = {
   _updatedAt: string;
   _rev: string;
   title: string;
+  label?: string;
   coverImage?: {
     asset?: {
       _ref: string;
@@ -333,6 +334,7 @@ export type Publication = {
     };
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt?: string;
     _type: "image";
     _key: string;
   }>;
@@ -529,11 +531,12 @@ export type FilmQueryResult = {
   }> | null;
 } | null;
 // Variable: filmsQuery
-// Query: *[_type == "film"] {     _id,  "title": coalesce(title, "Untitled"),  "slug": slug.current,  excerpt,  description,  coverImage,  videos[] {    title,    thumbnail,    "videoFile": videoFile.asset->url,    caption  }  }
+// Query: *[_type == "film"] {     _id,  "title": coalesce(title, "Untitled"),  "slug": slug.current,  label,  excerpt,  description,  coverImage,  videos[] {    title,    thumbnail,    "videoFile": videoFile.asset->url,    caption  }  }
 export type FilmsQueryResult = Array<{
   _id: string;
   title: string;
   slug: string;
+  label: string | null;
   excerpt: string | null;
   description: Array<{
     children?: Array<{
@@ -684,6 +687,7 @@ export type PublicationQueryResult = {
     };
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt?: string;
     _type: "image";
     _key: string;
   }> | null;
@@ -750,6 +754,7 @@ export type PublicationsQueryResult = Array<{
     };
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt?: string;
     _type: "image";
     _key: string;
   }> | null;
@@ -830,7 +835,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"about\"][0]": AboutQueryResult;
     "\n  *[_type == \"film\" && slug.current == $slug][0] {\n    \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  description,\n  coverImage,\n  videos[] {\n    title,\n    thumbnail,\n    \"videoFile\": videoFile.asset->url,\n    caption\n  }\n\n  }\n": FilmQueryResult;
-    "\n  *[_type == \"film\"] {\n    \n _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  description,\n  coverImage,\n  videos[] {\n    title,\n    thumbnail,\n    \"videoFile\": videoFile.asset->url,\n    caption\n  }\n\n  }\n": FilmsQueryResult;
+    "\n  *[_type == \"film\"] {\n    \n _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  label,\n  excerpt,\n  description,\n  coverImage,\n  videos[] {\n    title,\n    thumbnail,\n    \"videoFile\": videoFile.asset->url,\n    caption\n  }\n\n  }\n": FilmsQueryResult;
     "\n    *[_type == \"project\" && slug.current == $slug] [0] {\n      content,\n      \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  description,\n  excerpt,\n  coverImage,\n  date,\n  endDate,\n  galleries,\n  featured\n\n    }\n  ": ProjectQueryResult;
     "\n    *[_type == \"project\"] {\n      \n    _id,\n    \"title\": coalesce(title, \"Untitled\"),\n    \"slug\": slug.current,\n    excerpt,\n    coverImage,\n    date\n \n    }\n  ": ProjectsQueryResult;
     "\n    *[_type == \"publication\" && slug.current == $slug] [0] {\n      content,\n      \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  description,\n  excerpt,\n  previews,\n  coverImage,\n  contributors,\n  credits\n\n    }\n  ": PublicationQueryResult;

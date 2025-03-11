@@ -14,6 +14,12 @@ export const publicationType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "publishedAt",
+      title: "Published At",
+      type: "datetime",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",

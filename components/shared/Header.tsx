@@ -6,14 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useClickOutside } from "@/utils";
-
-const LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/project", label: "Projects" },
-  { href: "/publication", label: "Publications" },
-  { href: "/film", label: "Films" },
-  { href: "/about", label: "About" },
-];
+import { LINKS } from "@/constants";
 
 const NavLink = ({
   href,
