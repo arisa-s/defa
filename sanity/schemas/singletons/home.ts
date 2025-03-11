@@ -1,5 +1,5 @@
 import { defineField, defineType } from "sanity";
-import { HomeIcon, InfoOutlineIcon } from "@sanity/icons";
+import { HomeIcon } from "@sanity/icons";
 
 export const homeType = defineType({
   name: "home",
@@ -10,11 +10,16 @@ export const homeType = defineType({
     defineField({
       name: "events",
       type: "array",
-      of: [{ type: "string" }],
+      of: [{ type: "block" }],
     }),
     defineField({
       name: "current",
-      type: "string",
+      type: "array",
+      of: [{ type: "block" }],
+    }),
+    defineField({
+      name: "featuredVideo",
+      type: "video",
     }),
   ],
   preview: {

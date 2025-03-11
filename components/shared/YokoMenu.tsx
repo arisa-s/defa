@@ -48,7 +48,7 @@ export const YokoMenu = () => {
                 // Anchor the bubble’s bottom edge:
                 className="absolute -bottom-1.5 left-0"
               >
-                <div className="text-left bg-primary rounded-md px-6 py-4 text-secondary border border-[#980000]">
+                <div className="text-left bg-primary/50 backdrop-blur-md backdrop-filter rounded-md px-6 py-4 text-secondary border border-[#980000]">
                   {isMenuOpen ? (
                     <ul className="">
                       <label className="text-sm font-normal">MENU</label>
@@ -56,7 +56,7 @@ export const YokoMenu = () => {
                         <li key={link.href}>
                           <Link
                             href={link.href}
-                            className="block text-3xl font-bold text-secondary hover:underline leading-6"
+                            className="block text-2xl md:text-3xl font-bold text-secondary hover:underline leading-6"
                           >
                             {link.label}
                           </Link>
@@ -64,7 +64,7 @@ export const YokoMenu = () => {
                       ))}
                     </ul>
                   ) : (
-                    <span className="text-base">Menu...</span>
+                    <span className="text-base font-medium">Menu...</span>
                   )}
                 </div>
               </motion.div>

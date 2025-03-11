@@ -41,7 +41,9 @@ export const ProjectCard: FC<ProjectCardProps> = ({
 
   return (
     <>
-      <div className="flex flex-col md:hidden py-2">
+      <div
+        className={`flex flex-col md:hidden py-2 hover:text-tertiary ${selected ? "text-tertiary" : "text-primary"}`}
+      >
         <span>{projectNumber}</span>
         <h2>{title}</h2>
       </div>

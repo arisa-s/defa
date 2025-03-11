@@ -1,12 +1,12 @@
 "use client";
 
 import { PortableText } from "next-sanity";
-import { VideoPlayer } from "@/components/film";
 import DefaHeader from "@/components/shared/DefaHeader";
 import { SanityComponents } from "@/sanity/components";
 import { motion } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { FilmQueryResult } from "@/sanity.types";
+import { VideoPlayer } from "../shared";
 
 interface AnimatedFilmContentProps {
   film: NonNullable<FilmQueryResult>;
@@ -57,11 +57,12 @@ export default function AnimatedFilmContent({
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center space-y-6 pt-12"
+          className="text-center pt-12 space-y-2"
         >
-          <DefaHeader>{film.title}</DefaHeader>
+          <DefaHeader className="">{film.title}</DefaHeader>
+
           {film.description?.length ? (
-            <div className="max-w-2xl mx-auto">
+            <div className="max-w-2xl mx-auto text-secondary">
               <PortableText
                 components={SanityComponents}
                 value={film.description}

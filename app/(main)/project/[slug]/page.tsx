@@ -60,9 +60,9 @@ export default async function Page({ params }: Props) {
   return (
     <div className="mx-auto mb-12 md:mb-24">
       <article className="space-y-6 md:space-y-12 flex flex-col">
-        <div className="flex flex-row justify-between gap-8 md:gap-24">
+        <div className="flex flex-row justify-between gap-12 md:gap-24">
           <div className="relative flex-shrink-0">
-            <div className="sticky top-24 flex flex-col">
+            <div className="sticky top-24 flex flex-col space-y-2">
               <div className="relative w-20 h-20 md:w-32 md:h-32">
                 <Image
                   src={urlForImage(project.coverImage).url()}
@@ -71,7 +71,9 @@ export default async function Page({ params }: Props) {
                   className="object-cover"
                 />
               </div>
-              <h1 className="">{project.title}</h1>
+              <h1 className="w-20 md:w-32 leading-3 hidden md:block">
+                {project.title}
+              </h1>
             </div>
           </div>
           <div className="flex flex-col w-full gap-6 md:mx-36">

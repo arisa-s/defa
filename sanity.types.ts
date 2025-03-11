@@ -66,6 +66,51 @@ export type Gallery = {
   zoom?: boolean;
 };
 
+export type Home = {
+  _id: string;
+  _type: "home";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  events?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  current?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  featuredVideo?: Video;
+};
+
 export type Video = {
   _type: "video";
   title?: string;
@@ -466,7 +511,7 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | Geopoint | Gallery | Video | Settings | About | Film | SanityFileAsset | Project | FeaturedImages | Publication | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | Geopoint | Gallery | Home | Video | Settings | About | Film | SanityFileAsset | Project | FeaturedImages | Publication | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries/about.ts
 // Variable: aboutQuery
@@ -640,6 +685,54 @@ export type FilmsQueryResult = Array<{
   }> | null;
   publishedAt: string;
 }>;
+
+// Source: ./sanity/lib/queries/home.ts
+// Variable: homeQuery
+// Query: *[_type == "home"][0]
+export type HomeQueryResult = {
+  _id: string;
+  _type: "home";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  events?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  current?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  featuredVideo?: Video;
+} | null;
 
 // Source: ./sanity/lib/queries/project.ts
 // Variable: projectQuery
@@ -913,6 +1006,7 @@ declare module "@sanity/client" {
     "*[_type == \"about\"][0]": AboutQueryResult;
     "\n  *[_type == \"film\" && slug.current == $slug] [0] {\n    \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  description,\n  coverImage,\n  videos[] {\n    title,\n    thumbnail,\n    \"videoFile\": videoFile.asset->url,\n    caption\n  },\n  publishedAt\n\n  }\n": FilmQueryResult;
     "\n  *[_type == \"film\"] | order(publishedAt desc) {\n    \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  description,\n  coverImage,\n  videos[] {\n    title,\n    thumbnail,\n    \"videoFile\": videoFile.asset->url,\n    caption\n  },\n  publishedAt\n\n  }\n": FilmsQueryResult;
+    "*[_type == \"home\"][0]": HomeQueryResult;
     "\n    *[_type == \"project\" && slug.current == $slug] [0] {\n      content,\n      \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  description,\n  excerpt,\n  coverImage,\n  date,\n  endDate,\n  galleries,\n  featured,\n  context,\n  contributors\n\n    }\n  ": ProjectQueryResult;
     "\n    *[_type == \"project\"] {\n      \n    _id,\n    \"title\": coalesce(title, \"Untitled\"),\n    \"slug\": slug.current,\n    excerpt,\n    coverImage,\n    date\n \n    }\n  ": ProjectsQueryResult;
     "\n    *[_type == \"publication\" && slug.current == $slug] [0] {\n      content,\n      \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  description,\n  excerpt,\n  previews,\n  coverImage,\n  contributors,\n  credits,\n  publishedAt\n\n    }\n  ": PublicationQueryResult;

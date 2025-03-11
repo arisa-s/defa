@@ -3,6 +3,7 @@ import { filmType, projectType, publicationType } from "./documents";
 import { aboutType, siteSettingsType } from "./singletons";
 import { featuredImagesType, videoType } from "./objects";
 import { galleryType } from "./objects/gallery";
+import { homeType } from "./singletons/home";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -13,6 +14,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     // singletons
     aboutType,
     siteSettingsType,
+    homeType,
     // objects
     videoType,
     galleryType,

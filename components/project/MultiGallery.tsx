@@ -22,7 +22,7 @@ export const MultiGallery: FC<MultiGalleryProps> = ({ galleries }) => {
               <button
                 key={g.title}
                 onClick={() => setSelected(g)}
-                className={`uppercase text-left w-full border-b py-2 ${selected == g ? "text-primary" : "text-tertiary"}`}
+                className={`uppercase text-left w-full border-b py-2 hover:text-tertiary ${selected == g ? "text-terinary" : "text-primary"}`}
               >
                 {g.title}
               </button>
