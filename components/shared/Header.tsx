@@ -69,45 +69,50 @@ const MobileHeader: React.FC = () => {
   }, [pathname]);
 
   return (
-    <div className="max-w-8xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
-      <Link href="/">
-        <Image
-          className="w-12 cursor-pointer"
-          src="/logo.png"
-          width={2709}
-          height={2708}
-          alt="Studio Defa"
-        />
-      </Link>
-
-      {/* Page title */}
-      <h2 className="text-primary font-medium uppercase text-xs mr-20">
-        {displayPathname}
-      </h2>
-
-      {/* Hamburger button */}
-      <button
-        onClick={toggleMenu}
-        className="text-primary focus:outline-none lg:hidden"
-        aria-label="Toggle Menu"
-        aria-expanded={menuOpen}
+    <div>
+      <div
+        className={`max-w-8xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16 ${
+          menuOpen ? "" : "bg-primary-bg/50 backdrop-blur-md backdrop-filter"
+        }`}
       >
-        <svg
-          className="h-6 w-6"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M4 6h16M4 12h16m-7 6h7"
+        <Link href="/">
+          <Image
+            className="w-12 cursor-pointer"
+            src="/logo.png"
+            width={2709}
+            height={2708}
+            alt="Studio Defa"
           />
-        </svg>
-      </button>
+        </Link>
 
+        {/* Page title */}
+        <h2 className="text-primary font-medium uppercase text-xs mr-20">
+          {displayPathname}
+        </h2>
+
+        {/* Hamburger button */}
+        <button
+          onClick={toggleMenu}
+          className="text-primary focus:outline-none lg:hidden"
+          aria-label="Toggle Menu"
+          aria-expanded={menuOpen}
+        >
+          <svg
+            className="h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        </button>
+      </div>
       {/* Animated dropdown (mobile only) */}
       <AnimatePresence>
         {menuOpen && (
@@ -118,13 +123,18 @@ const MobileHeader: React.FC = () => {
             animate={{ y: "0%", opacity: 1 }}
             exit={{ y: "-100%", opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="absolute top-16 left-0 w-full lg:hidden"
+            className="fixed flex flex-col top-0 left-0 right-0 w-full lg:hidden z-50 transition-colors duration-300 bg-primary-bg/50 backdrop-blur-md backdrop-filter"
           >
-            {/* Semi-transparent backdrop with blur */}
-            <div className="absolute inset-0 bg-primary/50 backdrop-blur-md backdrop-filter z-20" />
-
-            {/* Menu content on top */}
-            <div className="relative z-30">
+            <button
+              className="ml-auto mr-4 mt-4 cursor-pointer"
+              onClick={toggleMenu}
+            >
+              CLOSE
+            </button>
+            <span className="text-center mx-auto uppercase font-medium text-sm">
+              {displayPathname}
+            </span>
+            <div className="relative">
               <NavigationMenu orientation="vertical" />
             </div>
           </motion.div>
@@ -135,17 +145,22 @@ const MobileHeader: React.FC = () => {
 };
 
 const DesktopHeader: React.FC = () => (
-  <div className="max-w-8xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16">
-    <Link href="/">
-      <Image
-        className="absolute top-4 w-16 cursor-pointer"
-        src="/logo.png"
-        width={2709}
-        height={2708}
-        alt="Studio Defa"
-      />
-    </Link>
-    <NavigationMenu orientation="horizontal" />
+  <div
+    className="transition-colors duration-300
+        bg-primary-bg/50 backdrop-blur-md backdrop-filter"
+  >
+    <div className="max-w-8xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16 ">
+      <Link href="/">
+        <Image
+          className="absolute top-4 w-16 cursor-pointer"
+          src="/logo.png"
+          width={2709}
+          height={2708}
+          alt="Studio Defa"
+        />
+      </Link>
+      <NavigationMenu orientation="horizontal" />
+    </div>
   </div>
 );
 
@@ -154,7 +169,7 @@ const SiteHeader: React.FC = () => {
     <header
       className={`
         fixed w-full z-10 transition-colors duration-300
-        bg-primary-bg/50 backdrop-blur-md backdrop-filter
+        
       `}
     >
       {/* Desktop nav */}
