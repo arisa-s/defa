@@ -22,7 +22,7 @@ export default async function Page() {
   return (
     <div className="min-h-full flex flex-col justify-center items-center">
       <div className="flex flex-col space-y-16 items-center">
-        <h1>DEFA STUDIO PUBLICATIONS ({publications.length})</h1>
+        <h1>DEFA PUBLICATIONS</h1>
         <div
           className={`${publications.length <= 3 ? `grid-cols-2 sm:grid-cols-${publications.length}` : "sm:grid-cols-3 md:grid-cols-4"} grid gap-12 md:gap-52`}
         >
