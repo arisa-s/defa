@@ -83,20 +83,22 @@ export default function DefaInlineCarousel({ images }: DefaPhotoGalleryProps) {
         <div className="mt-4 flex flex-col gap-4 md:flex-row md:justify-between">
           {/* Media Indexes */}
           <div className="flex flex-col">
-            {images.map((item, index) => (
-              <button
-                key={index}
-                onClick={() => handleThumbnailClick(index)}
-                className={`text-sm tabular flex items-center gap-2 transition-colors ${
-                  index === currentIndex
-                    ? "text-primary font-medium"
-                    : "text-tertiary"
-                }`}
-              >
-                <span>{item.alt || item._key}</span>
-                <span className="opacity-0">{item.alt || item._key}</span>
-              </button>
-            ))}
+            {images.map((item, index) =>
+              item.alt ? (
+                <button
+                  key={index}
+                  onClick={() => handleThumbnailClick(index)}
+                  className={`text-sm tabular flex items-center gap-2 transition-colors ${
+                    index === currentIndex
+                      ? "text-primary font-medium"
+                      : "text-tertiary"
+                  }`}
+                >
+                  <span>{item.alt || item._key}</span>
+                  <span className="opacity-0">{item.alt || item._key}</span>
+                </button>
+              ) : null
+            )}
           </div>
 
           {/* Thumbnails */}
