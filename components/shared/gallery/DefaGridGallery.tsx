@@ -32,7 +32,7 @@ const DefaGridGallery: FC<DefaPhotoGalleryProps> = ({ images }) => {
                 duration: 0.5,
                 delay: 0.1,
               }}
-              className="h-auto w-full"
+              className="relative h-auto w-full"
             >
               <Image
                 key={image._key}
@@ -43,7 +43,7 @@ const DefaGridGallery: FC<DefaPhotoGalleryProps> = ({ images }) => {
                 src={postImageUrl as string}
               />
               {image.alt ? (
-                <div className="z-30 group flex cursor-pointer absolute inset-0 items-center justify-center hover:bg-primary-bg/50 hover:backdrop-blur-md hover:backdrop-filter">
+                <div className="group flex cursor-pointer absolute inset-0 items-center justify-center hover:bg-primary-bg/50 hover:backdrop-blur-md hover:backdrop-filter">
                   <p className="text-transparent group-hover:text-primary">
                     {image.alt}
                   </p>

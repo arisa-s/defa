@@ -69,7 +69,13 @@ export default function ProjectsGrid({
                   {projectsByYear[year].map((project) => (
                     <div
                       key={project._id}
-                      onClick={() => setSelectedProject(project)}
+                      onClick={() => {
+                        if (selectedProject._id !== project._id) {
+                          setSelectedProject(project);
+                        } else {
+                          window.location.href = `/project/${project.slug}`;
+                        }
+                      }}
                     >
                       <ProjectCard
                         key={project._id}

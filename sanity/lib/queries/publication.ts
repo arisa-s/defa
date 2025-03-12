@@ -3,7 +3,7 @@ import { defineQuery } from "next-sanity";
 const publicationFields = /* groq */ `
   _id,
   "title": coalesce(title, "Untitled"),
-  "subtitle": coalesce(subtitle, ""),
+  subtitle,
   "slug": slug.current,
   description,
   excerpt,
@@ -17,7 +17,7 @@ const publicationFields = /* groq */ `
 const publicationSummaryFields = /* groq */ `
     _id,
     "title": coalesce(title, "Untitled"),
-    "subtitle": coalesce(subtitle, ""),
+    subtitle,
     "slug": slug.current,
     description,
     excerpt,
