@@ -120,10 +120,7 @@ export default async function Page({ params }: Props) {
 
         <div className="-mx-6 md:-mx-24">
           {project.featured?.images && (
-            <DefaInlineCarousel
-              images={project.featured?.images}
-              type={"inline"}
-            />
+            <DefaInlineCarousel images={project.featured?.images} />
           )}
         </div>
 
