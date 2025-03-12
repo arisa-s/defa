@@ -22,6 +22,7 @@ interface Credit {
 interface Publication {
   _id: string;
   title: string;
+  subtitle: string;
   coverImage: SanityImageSource;
   description?: string;
   contributors?: PortableTextBlock[];
