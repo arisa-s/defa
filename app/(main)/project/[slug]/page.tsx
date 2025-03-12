@@ -10,6 +10,7 @@ import MultiGallery from "@/components/project/MultiGallery";
 import { Gallery } from "@/sanity.types";
 import { Image } from "next-sanity/image";
 import DefaInlineCarousel from "@/components/shared/gallery/DefaInlineCarousel";
+import Link from "next/link";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -57,12 +58,28 @@ export default async function Page({ params }: Props) {
     return notFound();
   }
 
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  };
+
   return (
     <div className="mx-auto mb-12 md:mb-24">
       <article className="space-y-6 md:space-y-12 flex flex-col">
         <div className="flex flex-row justify-between gap-12 md:gap-24">
           <div className="relative flex-shrink-0">
             <div className="sticky top-24 flex flex-col space-y-2">
+              <Link href="/publication" className="text-4xl">
+                ⟵
+              </Link>
+              <span className="w-20 md:w-32 leading-3 hidden md:block text-xs text-tertiary">
+                {formatDate(project.date)}
+                {project.endDate && ` - ${formatDate(project.endDate)}`}
+              </span>
               <div className="relative w-20 h-20 md:w-32 md:h-32">
                 <Image
                   src={urlForImage(project.coverImage).url()}
@@ -79,7 +96,6 @@ export default async function Page({ params }: Props) {
           <div className="flex flex-col w-full gap-6 md:mx-36">
             {project.context ? (
               <div className="">
-                <label className="text-sm font-normal">CONTEXT</label>
                 <div className="-mx-4 md:-mx-36 text-2xl md:text-4xl font-medium text-secondary leading-5 md:leading-6">
                   <PortableText
                     components={SanityComponents}
@@ -125,7 +141,7 @@ export default async function Page({ params }: Props) {
             {(project.galleries?.length || 0) >= 1 && (
               <div className="flex flex-col">
                 <label className="font-normal mb-4 upper border-b">
-                  GALLERIES
+                  GALLERY
                 </label>
                 <MultiGallery galleries={project.galleries as Gallery[]} />
               </div>
