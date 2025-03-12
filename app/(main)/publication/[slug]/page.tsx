@@ -83,7 +83,14 @@ export default async function Page({ params }: Props) {
             <Link href="/publication" className="text-4xl">
               ⟵
             </Link>
-            <DefaHeader type="h1">{publication.title}</DefaHeader>
+            <div className="text-right">
+              <DefaHeader type="h1">{publication.title}</DefaHeader>
+              {publication.subtitle ? (
+                <span className="italic text-tertiary">
+                  {publication.subtitle}
+                </span>
+              ) : null}
+            </div>
           </div>
 
           <Image

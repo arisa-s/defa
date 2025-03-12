@@ -43,7 +43,12 @@ export default async function Page() {
                     height={height}
                     className="max-w-36 self-center"
                   />
-                  <p>{p.title}</p>
+                  <div className="items-center">
+                    <p>{p.title}</p>
+                    {p.subtitle ? (
+                      <span className="italic text-tertiary">{p.subtitle}</span>
+                    ) : null}
+                  </div>
                 </article>
               </Link>
             );

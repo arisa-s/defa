@@ -2815,6 +2815,13 @@
         },
         "optional": false
       },
+      "subtitle": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": false
+      },
       "publishedAt": {
         "type": "objectAttribute",
         "value": {
