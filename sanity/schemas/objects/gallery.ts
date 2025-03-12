@@ -29,7 +29,7 @@ export const galleryType = {
             {
               name: "alt",
               type: "string",
-              title: "Alternative text",
+              title: "Description text",
             },
           ],
         },
