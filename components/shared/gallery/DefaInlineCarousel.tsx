@@ -5,7 +5,11 @@ import { urlForImage } from "@/sanity/lib/image";
 import { Image } from "next-sanity/image";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { DefaPhotoGalleryProps } from "../DefaPhotoGallery";
+import {
+  internalGroqTypeReferenceTo,
+  SanityImageCrop,
+  SanityImageHotspot,
+} from "@/sanity.types";
 
 const responsive = {
   superLargeDesktop: {
@@ -30,7 +34,27 @@ const responsive = {
   },
 };
 
-export default function DefaInlineCarousel({ images }: DefaPhotoGalleryProps) {
+interface DefaInlineCarouselProps {
+  images: {
+    asset?:
+      | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean | undefined;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset" | undefined;
+        }
+      | undefined;
+    hotspot?: SanityImageHotspot | undefined;
+    crop?: SanityImageCrop | undefined;
+    alt?: string | undefined;
+    _type: "image";
+    _key: string;
+  }[];
+}
+
+export default function DefaInlineCarousel({
+  images,
+}: DefaInlineCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef<Carousel>(null);
   const width = 1249;

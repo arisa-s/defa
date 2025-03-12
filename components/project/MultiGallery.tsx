@@ -1,7 +1,7 @@
 "use client";
 import { Gallery } from "@/sanity.types";
 import { FC, useState } from "react";
-import DefaPhotoGallery from "../shared/DefaPhotoGallery";
+import DefaGridGallery from "../shared/gallery/DefaGridGallery";
 
 export interface MultiGalleryProps {
   galleries: Gallery[];
@@ -9,6 +9,7 @@ export interface MultiGalleryProps {
 
 export const MultiGallery: FC<MultiGalleryProps> = ({ galleries }) => {
   const [selected, setSelected] = useState(galleries[0]);
+
   if (galleries.length === 0) {
     return <p>No galleries available</p>;
   }
@@ -31,9 +32,7 @@ export const MultiGallery: FC<MultiGalleryProps> = ({ galleries }) => {
         </div>
       ) : null}
       <div className="max-w-7xl w-full mx-auto">
-        {selected.images && (
-          <DefaPhotoGallery images={selected.images} type={"grid"} />
-        )}
+        {selected.images && <DefaGridGallery images={selected.images} />}
       </div>
     </div>
   );

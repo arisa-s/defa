@@ -15,4 +15,5 @@ export type SanityImage = {
   hotspot?: SanityImageHotspot;
   crop?: SanityImageCrop;
   _type: "image";
+  alt?: string;
 };
