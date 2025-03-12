@@ -73,7 +73,7 @@ export default async function Page({ params }: Props) {
         <div className="flex flex-row justify-between gap-12 md:gap-24">
           <div className="relative flex-shrink-0">
             <div className="sticky top-24 flex flex-col space-y-2">
-              <Link href="/publication" className="text-4xl">
+              <Link href="/project" className="text-4xl">
                 ⟵
               </Link>
               <span className="w-20 md:w-32 leading-3 hidden md:block text-xs text-tertiary">
