@@ -77,8 +77,8 @@ const MobileHeader: React.FC = () => {
       >
         <Link href="/">
           <Image
-            className="w-12 cursor-pointer"
-            src={pathname == "/film" ? "/filmLogo.png" : "/logo.png"}
+            className={`${pathname.startsWith("/film") ? "w-16" : "w-12"} cursor-pointer`}
+            src={pathname.startsWith("/film") ? "/filmLogo.png" : "/logo.png"}
             width={2709}
             height={2708}
             alt="Studio Defa"
@@ -156,8 +156,8 @@ const DesktopHeader: React.FC = () => {
       <div className="max-w-8xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16 ">
         <Link href="/">
           <Image
-            className="absolute top-4 w-16 cursor-pointer"
-            src={pathname == "/film" ? "/filmLogo.png" : "/logo.png"}
+            className={`${pathname.startsWith("/film") ? "w-24 top-0" : "w-16 top-4"} cursor-pointer absolute`}
+            src={pathname.startsWith("/film") ? "/filmLogo.png" : "/logo.png"}
             width={2709}
             height={2708}
             alt="Studio Defa"
