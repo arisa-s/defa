@@ -22,7 +22,7 @@ const projectSummaryFields = /* groq */ `
     excerpt,
     coverImage,
     date
- `;
+`;
 
 export const projectQuery = defineQuery(`
     *[_type == "project" && slug.current == $slug] [0] {
@@ -32,7 +32,7 @@ export const projectQuery = defineQuery(`
   `);
 
 export const projectsQuery = defineQuery(`
-    *[_type == "project"] {
+    *[_type == "project"] | order(title asc) {
       ${projectSummaryFields}
     }
   `);
