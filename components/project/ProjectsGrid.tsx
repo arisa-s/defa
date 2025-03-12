@@ -49,7 +49,7 @@ export default function ProjectsGrid({
 
   return (
     <div>
-      <p className="mb-2">ARCHIVE</p>
+      <p className="mb-2">PROJECTS</p>
       <div className="flex border-t space-x-4 md:space-x-20 lg:space-x-36 justify-between">
         <div className="lg:max-w-5xl w-full">
           {Object.keys(projectsByYear)
