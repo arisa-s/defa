@@ -1,4 +1,5 @@
 import { PlayIcon } from "@sanity/icons";
+import { validation } from "sanity";
 
 export const videoType = {
   type: "object",
@@ -24,6 +25,7 @@ export const videoType = {
       options: {
         accept: "video/*", // Allows only video file uploads
       },
+      validation: (rule) => rule.required(),
     },
     {
       name: "caption",

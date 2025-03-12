@@ -22,8 +22,14 @@ export default async function Page() {
 
   return (
     <main className="p-6 md:p-12 text-right">
-      {data.featuredVideo ? (
-        <WelcomeModal featuredVideo={data.featuredVideo} />
+      {data.featuredVideo?.videoFile && data.featuredVideo?.thumbnail ? (
+        <WelcomeModal
+          featuredVideo={{
+            title: data.featuredVideo.title,
+            thumbnail: data.featuredVideo.thumbnail,
+            videoFile: data.featuredVideo.videoFile,
+          }}
+        />
       ) : null}
       <div className="grid md:grid-cols-5 max-w-4xl gap-12 w-full ml-auto">
         <div className="flex flex-col space-y-6 md:space-y-12 md:col-span-2">

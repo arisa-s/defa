@@ -5,8 +5,8 @@ import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { VideoPlayer } from "../shared";
 
 interface FeaturedVideo {
-  title: string;
-  thumbnail: SanityImageSource;
+  title: string | null;
+  thumbnail: SanityImageSource | null;
   videoFile: string;
 }
 

@@ -5,7 +5,7 @@ import { Image } from "next-sanity/image";
 import { FC, useState, useEffect, useRef } from "react";
 
 export interface VideoPlayerProps {
-  thumbnail: SanityImageSource;
+  thumbnail: SanityImageSource | null;
   video: string;
   className?: string;
   isActive?: boolean;
@@ -69,14 +69,16 @@ export const VideoPlayer: FC<VideoPlayerProps> = ({
       ) : (
         <div className="relative cursor-pointer" onClick={handlePlay}>
           {/* Thumbnail */}
-          <Image
-            src={urlForImage(thumbnail)?.height(450).width(800).url()}
-            alt="Video thumbnail"
-            width={800}
-            height={450}
-            className="w-full h-auto opacity-50"
-            priority
-          />
+          {thumbnail ? (
+            <Image
+              src={urlForImage(thumbnail)?.height(450).width(800).url()}
+              alt="Video thumbnail"
+              width={800}
+              height={450}
+              className="w-full h-auto opacity-50"
+              priority
+            />
+          ) : null}
           {/* Play Button Overlay */}
           <div className="absolute inset-0 flex items-center justify-center bg-black/30">
             <div className="bg-[#cfe2f3]/80 p-3 rounded-full shadow-lg">
