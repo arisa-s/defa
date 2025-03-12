@@ -30,12 +30,21 @@ export default function ProjectsGrid({
   );
 
   // Create a map of project IDs to their numbers (1-based index)
-  const projectNumbers = new Map(
+  const projectDates = new Map(
     sortedProjects.map((project, index) => [
       project._id,
       (index + 1).toString().padStart(2, "0"),
     ])
   );
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  };
 
   // Group projects by year
   const projectsByYear = projects.reduce<ProjectsByYear>((acc, project) => {
@@ -69,7 +78,7 @@ export default function ProjectsGrid({
                         }
                         title={project.title}
                         slug={project.slug}
-                        projectNumber={projectNumbers.get(project._id) || "00"}
+                        projectDate={formatDate(project.date)}
                         selected={selectedProject._id === project._id}
                       />
                     </div>
@@ -84,7 +93,7 @@ export default function ProjectsGrid({
           className="group w-full max-w-sm lg:max-w-md ml-auto mt-4 flex flex-col space-y-2"
         >
           <p className="">
-            {projectNumbers.get(selectedProject._id) || "00"}/{totalProjects}
+            {projectDates.get(selectedProject._id) || "00"}/{totalProjects}
           </p>
 
           <div className="w-full flex flex-col items-center">

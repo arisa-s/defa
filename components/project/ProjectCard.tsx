@@ -7,14 +7,14 @@ export interface ProjectCardProps {
   title: string;
   slug: string;
   imageUrl: string;
-  projectNumber: string;
+  projectDate: string;
   selected?: boolean;
 }
 
 export const ProjectCard: FC<ProjectCardProps> = ({
   title,
   imageUrl,
-  projectNumber,
+  projectDate,
   selected,
 }) => {
   const [showImage, setShowImage] = useState(false);
@@ -44,7 +44,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
       <div
         className={`flex flex-col md:hidden py-2 hover:text-tertiary ${selected ? "text-tertiary" : "text-primary"}`}
       >
-        <span>{projectNumber}</span>
+        <span className="text-xs text-tertiary">{projectDate}</span>
         <h2>{title}</h2>
       </div>
       <div
@@ -52,7 +52,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
         onMouseLeave={handleMouseLeave}
         className="h-40 md:h-60 lg:h-72 space-y flex-col cursor-pointer hidden md:flex py-2 px-3"
       >
-        <span>{projectNumber}</span>
+        <span className="text-xs text-tertiary">{projectDate}</span>
 
         <AnimatePresence mode="wait">
           {showImage || selected ? (

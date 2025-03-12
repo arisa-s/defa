@@ -32,7 +32,7 @@ export const projectQuery = defineQuery(`
   `);
 
 export const projectsQuery = defineQuery(`
-    *[_type == "project"] | order(title asc) {
+    *[_type == "project"] | order(date desc) {
       ${projectSummaryFields}
     }
   `);
