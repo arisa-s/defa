@@ -10,6 +10,7 @@ interface Publication {
   slug: string;
   title: string;
   coverImage: SanityImageSource;
+  subtitle?: string;
 }
 
 export default async function Page() {
