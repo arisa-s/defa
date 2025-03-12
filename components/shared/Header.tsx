@@ -78,7 +78,7 @@ const MobileHeader: React.FC = () => {
         <Link href="/">
           <Image
             className="w-12 cursor-pointer"
-            src="/logo.png"
+            src={pathname == "/film" ? "/filmLogo.png" : "/logo.png"}
             width={2709}
             height={2708}
             alt="Studio Defa"
@@ -144,25 +144,30 @@ const MobileHeader: React.FC = () => {
   );
 };
 
-const DesktopHeader: React.FC = () => (
-  <div
-    className="transition-colors duration-300
+const DesktopHeader: React.FC = () => {
+  const pathname = usePathname();
+
+  console.log(pathname);
+  return (
+    <div
+      className="transition-colors duration-300
         bg-primary-bg/50 backdrop-blur-md backdrop-filter"
-  >
-    <div className="max-w-8xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16 ">
-      <Link href="/">
-        <Image
-          className="absolute top-4 w-16 cursor-pointer"
-          src="/logo.png"
-          width={2709}
-          height={2708}
-          alt="Studio Defa"
-        />
-      </Link>
-      <NavigationMenu orientation="horizontal" />
+    >
+      <div className="max-w-8xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16 ">
+        <Link href="/">
+          <Image
+            className="absolute top-4 w-16 cursor-pointer"
+            src={pathname == "/film" ? "/filmLogo.png" : "/logo.png"}
+            width={2709}
+            height={2708}
+            alt="Studio Defa"
+          />
+        </Link>
+        <NavigationMenu orientation="horizontal" />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const SiteHeader: React.FC = () => {
   return (
