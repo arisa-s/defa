@@ -846,7 +846,7 @@ export type ProjectsQueryResult = Array<{
 
 // Source: ./sanity/lib/queries/publication.ts
 // Variable: publicationQuery
-// Query: *[_type == "publication" && slug.current == $slug] [0] {      content,        _id,  "title": coalesce(title, "Untitled"),  "subtitle": coalesce(subtitle, ""),  "slug": slug.current,  description,  excerpt,  previews,  coverImage,  contributors,  credits,  publishedAt    }
+// Query: *[_type == "publication" && slug.current == $slug] [0] {      content,        _id,  "title": coalesce(title, "Untitled"),  subtitle,  "slug": slug.current,  description,  excerpt,  previews,  coverImage,  contributors,  credits,  publishedAt    }
 export type PublicationQueryResult = {
   content: null;
   _id: string;
@@ -905,7 +905,7 @@ export type PublicationQueryResult = {
   publishedAt: string;
 } | null;
 // Variable: publicationsQuery
-// Query: *[_type == "publication"] | order(publishedAt desc) {          _id,    "title": coalesce(title, "Untitled"),    "subtitle": coalesce(subtitle, ""),    "slug": slug.current,    description,    excerpt,    coverImage,    previews,    credits,    publishedAt     }
+// Query: *[_type == "publication"] | order(publishedAt desc) {          _id,    "title": coalesce(title, "Untitled"),    subtitle,    "slug": slug.current,    description,    excerpt,    coverImage,    previews,    credits,    publishedAt     }
 export type PublicationsQueryResult = Array<{
   _id: string;
   title: string;
@@ -1019,8 +1019,8 @@ declare module "@sanity/client" {
     "*[_type == \"home\"][0]{\n  current,\n  events,\n  featuredVideo {\n    title,\n    thumbnail,\n    \"videoFile\": videoFile.asset->url\n  }\n}": HomeQueryResult;
     "\n    *[_type == \"project\" && slug.current == $slug] [0] {\n      content,\n      \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  description,\n  excerpt,\n  coverImage,\n  date,\n  endDate,\n  galleries,\n  featured,\n  context,\n  contributors\n\n    }\n  ": ProjectQueryResult;
     "\n    *[_type == \"project\"] | order(date desc) {\n      \n    _id,\n    \"title\": coalesce(title, \"Untitled\"),\n    \"slug\": slug.current,\n    excerpt,\n    coverImage,\n    date\n\n    }\n  ": ProjectsQueryResult;
-    "\n    *[_type == \"publication\" && slug.current == $slug] [0] {\n      content,\n      \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"subtitle\": coalesce(subtitle, \"\"),\n  \"slug\": slug.current,\n  description,\n  excerpt,\n  previews,\n  coverImage,\n  contributors,\n  credits,\n  publishedAt\n\n    }\n  ": PublicationQueryResult;
-    "\n    *[_type == \"publication\"] | order(publishedAt desc) {\n      \n    _id,\n    \"title\": coalesce(title, \"Untitled\"),\n    \"subtitle\": coalesce(subtitle, \"\"),\n    \"slug\": slug.current,\n    description,\n    excerpt,\n    coverImage,\n    previews,\n    credits,\n    publishedAt\n \n    }\n  ": PublicationsQueryResult;
+    "\n    *[_type == \"publication\" && slug.current == $slug] [0] {\n      content,\n      \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  subtitle,\n  \"slug\": slug.current,\n  description,\n  excerpt,\n  previews,\n  coverImage,\n  contributors,\n  credits,\n  publishedAt\n\n    }\n  ": PublicationQueryResult;
+    "\n    *[_type == \"publication\"] | order(publishedAt desc) {\n      \n    _id,\n    \"title\": coalesce(title, \"Untitled\"),\n    subtitle,\n    \"slug\": slug.current,\n    description,\n    excerpt,\n    coverImage,\n    previews,\n    credits,\n    publishedAt\n \n    }\n  ": PublicationsQueryResult;
     "*[_type == \"settings\"][0]": SiteSettingsQueryResult;
     "*[_type == \"film\" && defined(slug.current)]{\"slug\": slug.current}": FilmSlugsResult;
     "*[_type == \"project\" && defined(slug.current)]{\"slug\": slug.current}": ProjectSlugsResult;
