@@ -7,8 +7,9 @@ import { sanityFetch } from "@/sanity/lib/fetch";
 import { publicationQuery } from "@/sanity/lib/queries/publication";
 import { SanityComponents } from "@/sanity/components";
 import { DefaHeader } from "@/components/shared";
-import DefaInlineCarousel from "@/components/shared/gallery/DefaInlineCarousel";
-import { DefaPhotoGalleryProps } from "@/components/shared/DefaPhotoGallery";
+import DefaInlineCarousel, {
+  DefaInlineCarouselProps,
+} from "@/components/shared/gallery/DefaInlineCarousel";
 import Link from "next/link";
 import { Image } from "next-sanity/image";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
@@ -27,7 +28,7 @@ interface Publication {
   description?: string;
   contributors?: PortableTextBlock[];
   credits?: Credit[];
-  previews?: DefaPhotoGalleryProps["images"];
+  previews?: DefaInlineCarouselProps["images"];
 }
 
 type Props = {

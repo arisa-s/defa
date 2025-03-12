@@ -34,7 +34,7 @@ const responsive = {
   },
 };
 
-interface DefaInlineCarouselProps {
+export interface DefaInlineCarouselProps {
   images: {
     asset?:
       | {
