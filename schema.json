@@ -292,27 +292,6 @@
           },
           "optional": true
         },
-        "display": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "union",
-            "of": [
-              {
-                "type": "string",
-                "value": "stacked"
-              },
-              {
-                "type": "string",
-                "value": "inline"
-              },
-              {
-                "type": "string",
-                "value": "carousel"
-              }
-            ]
-          },
-          "optional": true
-        },
         "zoom": {
           "type": "objectAttribute",
           "value": {
@@ -2781,27 +2760,6 @@
                 }
               }
             }
-          },
-          "optional": true
-        },
-        "display": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "union",
-            "of": [
-              {
-                "type": "string",
-                "value": "stacked"
-              },
-              {
-                "type": "string",
-                "value": "inline"
-              },
-              {
-                "type": "string",
-                "value": "carousel"
-              }
-            ]
           },
           "optional": true
         },

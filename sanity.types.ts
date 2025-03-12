@@ -62,7 +62,6 @@ export type Gallery = {
     _type: "image";
     _key: string;
   }>;
-  display?: "stacked" | "inline" | "carousel";
   zoom?: boolean;
 };
 
@@ -260,9 +259,11 @@ export type Film = {
     _type: "block";
     _key: string;
   }>;
-  videos?: Array<{
-    _key: string;
-  } & Video>;
+  videos?: Array<
+    {
+      _key: string;
+    } & Video
+  >;
 };
 
 export type SanityFileAsset = {
@@ -364,9 +365,11 @@ export type Project = {
     _key: string;
   }>;
   featured?: FeaturedImages;
-  galleries?: Array<{
-    _key: string;
-  } & Gallery>;
+  galleries?: Array<
+    {
+      _key: string;
+    } & Gallery
+  >;
 };
 
 export type FeaturedImages = {
@@ -384,7 +387,6 @@ export type FeaturedImages = {
     _type: "image";
     _key: string;
   }>;
-  display?: "stacked" | "inline" | "carousel";
   zoom?: boolean;
 };
 
@@ -511,7 +513,27 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | Geopoint | Gallery | Home | Video | Settings | About | Film | SanityFileAsset | Project | FeaturedImages | Publication | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
+export type AllSanitySchemaTypes =
+  | SanityImagePaletteSwatch
+  | SanityImagePalette
+  | SanityImageDimensions
+  | Geopoint
+  | Gallery
+  | Home
+  | Video
+  | Settings
+  | About
+  | Film
+  | SanityFileAsset
+  | Project
+  | FeaturedImages
+  | Publication
+  | SanityImageCrop
+  | SanityImageHotspot
+  | SanityImageAsset
+  | SanityAssetSourceData
+  | SanityImageMetadata
+  | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries/about.ts
 // Variable: aboutQuery
@@ -774,9 +796,11 @@ export type ProjectQueryResult = {
   };
   date: string;
   endDate: string | null;
-  galleries: Array<{
-    _key: string;
-  } & Gallery> | null;
+  galleries: Array<
+    {
+      _key: string;
+    } & Gallery
+  > | null;
   featured: FeaturedImages | null;
   context: Array<{
     children?: Array<{
@@ -1003,17 +1027,17 @@ export type PublicationSlugsResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"about\"][0]": AboutQueryResult;
-    "\n  *[_type == \"film\" && slug.current == $slug] [0] {\n    \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  description,\n  coverImage,\n  videos[] {\n    title,\n    thumbnail,\n    \"videoFile\": videoFile.asset->url,\n    caption\n  },\n  publishedAt\n\n  }\n": FilmQueryResult;
-    "\n  *[_type == \"film\"] | order(publishedAt desc) {\n    \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  description,\n  coverImage,\n  videos[] {\n    title,\n    thumbnail,\n    \"videoFile\": videoFile.asset->url,\n    caption\n  },\n  publishedAt\n\n  }\n": FilmsQueryResult;
-    "*[_type == \"home\"][0]": HomeQueryResult;
-    "\n    *[_type == \"project\" && slug.current == $slug] [0] {\n      content,\n      \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  description,\n  excerpt,\n  coverImage,\n  date,\n  endDate,\n  galleries,\n  featured,\n  context,\n  contributors\n\n    }\n  ": ProjectQueryResult;
-    "\n    *[_type == \"project\"] {\n      \n    _id,\n    \"title\": coalesce(title, \"Untitled\"),\n    \"slug\": slug.current,\n    excerpt,\n    coverImage,\n    date\n \n    }\n  ": ProjectsQueryResult;
-    "\n    *[_type == \"publication\" && slug.current == $slug] [0] {\n      content,\n      \n  _id,\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  description,\n  excerpt,\n  previews,\n  coverImage,\n  contributors,\n  credits,\n  publishedAt\n\n    }\n  ": PublicationQueryResult;
-    "\n    *[_type == \"publication\"] | order(publishedAt desc) {\n      \n    _id,\n    \"title\": coalesce(title, \"Untitled\"),\n    \"slug\": slug.current,\n    description,\n    excerpt,\n    coverImage,\n    previews,\n    credits,\n    publishedAt\n \n    }\n  ": PublicationsQueryResult;
-    "*[_type == \"settings\"][0]": SiteSettingsQueryResult;
-    "*[_type == \"film\" && defined(slug.current)]{\"slug\": slug.current}": FilmSlugsResult;
-    "*[_type == \"project\" && defined(slug.current)]{\"slug\": slug.current}": ProjectSlugsResult;
-    "*[_type == \"publication\" && defined(slug.current)]{\"slug\": slug.current}": PublicationSlugsResult;
+    '*[_type == "about"][0]': AboutQueryResult;
+    '\n  *[_type == "film" && slug.current == $slug] [0] {\n    \n  _id,\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  description,\n  coverImage,\n  videos[] {\n    title,\n    thumbnail,\n    "videoFile": videoFile.asset->url,\n    caption\n  },\n  publishedAt\n\n  }\n': FilmQueryResult;
+    '\n  *[_type == "film"] | order(publishedAt desc) {\n    \n  _id,\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  description,\n  coverImage,\n  videos[] {\n    title,\n    thumbnail,\n    "videoFile": videoFile.asset->url,\n    caption\n  },\n  publishedAt\n\n  }\n': FilmsQueryResult;
+    '*[_type == "home"][0]': HomeQueryResult;
+    '\n    *[_type == "project" && slug.current == $slug] [0] {\n      content,\n      \n  _id,\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  description,\n  excerpt,\n  coverImage,\n  date,\n  endDate,\n  galleries,\n  featured,\n  context,\n  contributors\n\n    }\n  ': ProjectQueryResult;
+    '\n    *[_type == "project"] {\n      \n    _id,\n    "title": coalesce(title, "Untitled"),\n    "slug": slug.current,\n    excerpt,\n    coverImage,\n    date\n \n    }\n  ': ProjectsQueryResult;
+    '\n    *[_type == "publication" && slug.current == $slug] [0] {\n      content,\n      \n  _id,\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  description,\n  excerpt,\n  previews,\n  coverImage,\n  contributors,\n  credits,\n  publishedAt\n\n    }\n  ': PublicationQueryResult;
+    '\n    *[_type == "publication"] | order(publishedAt desc) {\n      \n    _id,\n    "title": coalesce(title, "Untitled"),\n    "slug": slug.current,\n    description,\n    excerpt,\n    coverImage,\n    previews,\n    credits,\n    publishedAt\n \n    }\n  ': PublicationsQueryResult;
+    '*[_type == "settings"][0]': SiteSettingsQueryResult;
+    '*[_type == "film" && defined(slug.current)]{"slug": slug.current}': FilmSlugsResult;
+    '*[_type == "project" && defined(slug.current)]{"slug": slug.current}': ProjectSlugsResult;
+    '*[_type == "publication" && defined(slug.current)]{"slug": slug.current}': PublicationSlugsResult;
   }
 }
