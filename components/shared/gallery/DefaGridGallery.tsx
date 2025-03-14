@@ -29,12 +29,34 @@ interface DefaGridGalleryProps {
     _key: string;
   }[];
 }
+
 const DefaGridGallery: FC<DefaGridGalleryProps> = ({ images }) => {
   const [selectedImage, setSelectedImage] = useState<SanityImage | null>(null);
+
   if (!images || images.length === 0) return null;
 
   const handleImageClick = (image: SanityImage) => {
     setSelectedImage(image);
+  };
+
+  const handlePrevImage = () => {
+    if (!selectedImage) return;
+    const currentIndex = images.findIndex((img) => img === selectedImage);
+    const prevIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1;
+    setSelectedImage(images[prevIndex] as SanityImage);
+  };
+
+  const handleNextImage = () => {
+    if (!selectedImage) return;
+    const currentIndex = images.findIndex((img) => img === selectedImage);
+    const nextIndex = currentIndex < images.length - 1 ? currentIndex + 1 : 0;
+    setSelectedImage(images[nextIndex] as SanityImage);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowLeft") handlePrevImage();
+    if (e.key === "ArrowRight") handleNextImage();
+    if (e.key === "Escape") setSelectedImage(null);
   };
 
   return (
@@ -83,7 +105,7 @@ const DefaGridGallery: FC<DefaGridGalleryProps> = ({ images }) => {
           })}
         </Masonry>
       </ResponsiveMasonry>
-      {/* Modal for mobile image view */}
+
       <AnimatePresence>
         {selectedImage && (
           <motion.div
@@ -92,6 +114,8 @@ const DefaGridGallery: FC<DefaGridGalleryProps> = ({ images }) => {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
             onClick={() => setSelectedImage(null)}
+            onKeyDown={handleKeyDown}
+            tabIndex={0}
           >
             <button
               onClick={() => setSelectedImage(null)}
@@ -99,6 +123,29 @@ const DefaGridGallery: FC<DefaGridGalleryProps> = ({ images }) => {
             >
               CLOSE
             </button>
+
+            {/* Left Arrow */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handlePrevImage();
+              }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white text-6xl hover:text-gray-300 transition-colors z-50 py-24 pr-16"
+            >
+              ⟵
+            </button>
+
+            {/* Right Arrow */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleNextImage();
+              }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-6xl hover:text-gray-300 transition-colors z-50 py-24 ml-16"
+            >
+              ⟶
+            </button>
+
             <motion.div
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
@@ -106,6 +153,24 @@ const DefaGridGallery: FC<DefaGridGalleryProps> = ({ images }) => {
               className="relative w-full h-[80vh] max-w-5xl flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Left click zone */}
+              <div
+                className="absolute left-0 top-0 w-1/2 h-full cursor-w-resize z-10"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePrevImage();
+                }}
+              />
+
+              {/* Right click zone */}
+              <div
+                className="absolute right-0 top-0 w-1/2 h-full cursor-e-resize z-10"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleNextImage();
+                }}
+              />
+
               <div className="relative w-full h-full">
                 <Image
                   src={urlForImage(selectedImage).url()}
