@@ -64,7 +64,9 @@ export const YokoMenu = () => {
                       ))}
                     </ul>
                   ) : (
-                    <span className="text-base font-medium">Menu...</span>
+                    <span className="text-xl md:text-3xl font-medium">
+                      Menu...
+                    </span>
                   )}
                 </div>
               </motion.div>
