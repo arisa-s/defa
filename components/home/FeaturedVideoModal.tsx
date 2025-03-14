@@ -18,9 +18,15 @@ export default function FeaturedVideoModal({
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+    // Check if this is the first visit in the session
+    const hasVisited = sessionStorage.getItem("hasVisited");
+
+    // If it's first visit, wait for pageload overlay (3s) + animation duration (0.8s) + small buffer
+    const delay = hasVisited ? 1000 : 4000;
+
     const timer = setTimeout(() => {
       setShowModal(true);
-    }, 1000);
+    }, delay);
 
     return () => clearTimeout(timer);
   }, []);

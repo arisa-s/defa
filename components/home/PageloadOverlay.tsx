@@ -7,11 +7,11 @@ export const PageloadOverlay = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const hasVisited = localStorage.getItem("hasVisited");
+    const hasVisited = sessionStorage.getItem("hasVisited");
 
     if (!hasVisited) {
       setLoading(true);
-      localStorage.setItem("hasVisited", "true"); // Mark as visited
+      sessionStorage.setItem("hasVisited", "true"); // Mark as visited for this session
 
       // Simulate a 3-second load; replace with your real data/route logic
       const timer = setTimeout(() => setLoading(false), 3000);
