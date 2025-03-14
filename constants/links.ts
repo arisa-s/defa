@@ -2,8 +2,8 @@
 
 export const LINKS = [
   { href: "/", label: "Home" },
-  { href: "/project", label: "Projects" },
-  { href: "/publication", label: "Publications" },
-  { href: "/film", label: "Films" },
+  { href: "/projects", label: "Projects" },
+  { href: "/publications", label: "Publications" },
+  { href: "/films", label: "Films" },
   { href: "/about", label: "About" },
 ];

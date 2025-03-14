@@ -37,7 +37,7 @@ export const filmType = defineType({
       title: "Slug",
       type: "slug",
       description:
-        "the last part of the URL (e.g. what-if-we-kiss => /film/what-if-we-kiss)",
+        "the last part of the URL (e.g. what-if-we-kiss => /films/what-if-we-kiss)",
       options: {
         source: "title",
         maxLength: 96,

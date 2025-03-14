@@ -16,7 +16,7 @@ export const FilmCard: FC<FilmsCardProps> = ({
   imageUrl,
 }) => {
   return (
-    <Link href={`/film/${slug}`}>
+    <Link href={`/films/${slug}`}>
       <div className="group max-w-[250px] w-full aspect-[2/3] [perspective:1000px]">
         <div className="relative col-span-1 w-full h-full border bg-secondary border-primary self-center items-center justify-center flex flex-col transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
           {/* front */}

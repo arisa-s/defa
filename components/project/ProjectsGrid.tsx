@@ -73,7 +73,7 @@ export default function ProjectsGrid({
                         if (selectedProject._id !== project._id) {
                           setSelectedProject(project);
                         } else {
-                          window.location.href = `/project/${project.slug}`;
+                          window.location.href = `/projects/${project.slug}`;
                         }
                       }}
                     >
@@ -95,7 +95,7 @@ export default function ProjectsGrid({
         </div>
 
         <Link
-          href={`/project/${selectedProject.slug}`}
+          href={`/projects/${selectedProject.slug}`}
           className="group w-full max-w-sm lg:max-w-md ml-auto mt-4 flex flex-col space-y-2"
         >
           <p className="">

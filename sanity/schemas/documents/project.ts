@@ -19,7 +19,7 @@ export const projectType = defineType({
       title: "Slug",
       type: "slug",
       description:
-        "The last part of the URL (e.g. defa-2024 => /project/defa-2024)",
+        "The last part of the URL (e.g. defa-2024 => /projects/defa-2024)",
       options: {
         source: "title",
         maxLength: 96,

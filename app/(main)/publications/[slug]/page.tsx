@@ -82,7 +82,7 @@ export default async function Page({ params }: Props) {
       <article className="flex flex-col md:flex-row gap-6">
         <div className="flex md:flex-col space-y-4 justify-between">
           <div className="space-y-2">
-            <Link href="/publication" className="text-4xl">
+            <Link href="/publications" className="text-4xl">
               ⟵
             </Link>
             <div className="text-right">

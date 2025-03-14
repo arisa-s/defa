@@ -30,7 +30,7 @@ export const publicationType = defineType({
       title: "Slug",
       type: "slug",
       description:
-        "the last part of the URL (e.g. defa-2024 => /publication/defa-2024)",
+        "the last part of the URL (e.g. defa-2024 => /publications/defa-2024)",
       options: {
         source: "title",
         maxLength: 96,

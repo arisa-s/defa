@@ -29,7 +29,7 @@ export default async function Page() {
         >
           {publications.map((p: Publication) => {
             return (
-              <Link href={`/publication/${p.slug}`} key={p._id}>
+              <Link href={`/publications/${p.slug}`} key={p._id}>
                 <article
                   key={p._id}
                   className="flex flex-col gap-6 md:gap-12 text-center"
