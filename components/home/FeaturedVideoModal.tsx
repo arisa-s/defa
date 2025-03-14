@@ -10,7 +10,7 @@ interface FeaturedVideo {
   videoFile: string;
 }
 
-export default function WelcomeModal({
+export default function FeaturedVideoModal({
   featuredVideo,
 }: {
   featuredVideo: FeaturedVideo;

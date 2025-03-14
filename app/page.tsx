@@ -3,10 +3,10 @@ import { sanityFetch } from "@/sanity/lib/fetch";
 import { PortableText } from "next-sanity";
 import { SanityComponents } from "@/sanity/components";
 import Link from "next/link";
-import WelcomeModal from "@/components/home/WelcomeModal";
 import YokoMenu from "@/components/shared/YokoMenu";
 import PageloadOverlay from "@/components/home/PageloadOverlay";
 import { notFound } from "next/navigation";
+import FeaturedVideoModal from "@/components/home/FeaturedVideoModal";
 
 export async function generateStaticParams() {
   const home = await sanityFetch({ query: homeQuery });
@@ -22,8 +22,8 @@ export default async function Page() {
 
   return (
     <main className="p-6 md:p-12 text-right">
-      {data.featuredVideo?.videoFile && data.featuredVideo?.thumbnail ? (
-        <WelcomeModal
+      {data.featuredVideo?.videoFile ? (
+        <FeaturedVideoModal
           featuredVideo={{
             title: data.featuredVideo.title,
             thumbnail: data.featuredVideo.thumbnail,
