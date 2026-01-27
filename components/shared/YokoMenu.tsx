@@ -24,12 +24,12 @@ export const YokoMenu = ({ notYoko = false }) => {
           alt="yoko thinking"
           width={907}
           height={1280}
-          className={notYoko ? "w-36 md:w-64" : "w-40 md:w-64"}
+          className={notYoko ? "w-32 md:w-64" : "w-40 md:w-64"}
         />
 
         {/* Speech Bubble and Arrow Container */}
         <div
-          className={`absolute top-16 md:top-36 ${notYoko ? " -right-6 md:-right-12" : "right-12 md:right-16"}`}
+          className={`absolute top-16 md:top-36 ${notYoko ? " -right-4 md:-right-12" : "right-12 md:right-16"}`}
         >
           <div className="relative">
             <AnimatePresence>
