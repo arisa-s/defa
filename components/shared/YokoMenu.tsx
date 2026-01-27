@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { LINKS } from "@/constants";
 
-export const YokoMenu = () => {
+export const YokoMenu = ({ notYoko = false }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
@@ -20,15 +20,17 @@ export const YokoMenu = () => {
       <div className="relative">
         {/* Yoko image (clickable) */}
         <Image
-          src="/yoko.png"
+          src={notYoko ? "/not-yoko.png" : "/yoko.png"}
           alt="yoko thinking"
           width={907}
           height={1280}
-          className="w-40 md:w-64"
+          className={notYoko ? "w-36 md:w-64" : "w-40 md:w-64"}
         />
 
         {/* Speech Bubble and Arrow Container */}
-        <div className="absolute top-16 md:top-36 right-12 md:right-16">
+        <div
+          className={`absolute top-16 md:top-36 ${notYoko ? " -right-6 md:-right-12" : "right-12 md:right-16"}`}
+        >
           <div className="relative">
             <AnimatePresence>
               <motion.div

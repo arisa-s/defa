@@ -174,7 +174,6 @@ const SiteHeader: React.FC = () => {
     <header
       className={`
         fixed w-full z-10 transition-colors duration-300
-        
       `}
     >
       {/* Desktop nav */}

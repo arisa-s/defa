@@ -13,8 +13,14 @@ export async function generateStaticParams() {
   return home ? [{}] : [];
 }
 
-export default async function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
   const data = await sanityFetch({ query: homeQuery });
+  const resolved = await searchParams;
+  const notYoko = resolved?.yoko === "false";
 
   if (!data) {
     return notFound();
@@ -65,7 +71,7 @@ export default async function Page() {
           </ul>
         </div>
       </div>
-      <YokoMenu />
+      <YokoMenu notYoko={notYoko} />
       <PageloadOverlay />
     </main>
   );
