@@ -6,6 +6,7 @@ import { toPlainText } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { siteSettingsQuery } from "@/sanity/lib/queries";
 import { resolveOpenGraphImage } from "@/sanity/lib/image";
+import AppWithCursor from "@/components/shared/AppWithCursor";
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await sanityFetch({
@@ -47,7 +48,9 @@ export default async function RootLayout({
       lang="en"
       className={`${montserrat.variable} ${youngSerif.variable} ${agrandir.variable} antialiased`}
     >
-      <body>{children}</body>
+      <body>
+        <AppWithCursor>{children}</AppWithCursor>
+      </body>
     </html>
   );
 }
