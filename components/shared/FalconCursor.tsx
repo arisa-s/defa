@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-const CURSOR_SIZE = 82;
+const CURSOR_SIZE = 60;
 /** Gap between falcon (left) and cursor position (right); falcon sits to the left of the actual cursor */
 const OFFSET_LEFT_OF_CURSOR = 8;
 const CENTER_Y = CURSOR_SIZE / 2;
